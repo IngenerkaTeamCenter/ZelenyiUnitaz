@@ -1,58 +1,75 @@
 #include <iostream>
-#include "TXLib.h"
+#include "Lib\\TXLib.h"
+
+/*
+1) Структура для кнопки (в которой есть ещё и картинка)
+2) Нормальное меню
+3) Сделать нажатие на кнопку функцией
+4) Выводить разные картинки по нажатию на разные кнопки
+*/
 
 using namespace std;
 
-struct Object {
-int x;   //расположение по x
-int y;   //расположение по y
-int o;   //объект
-int v;   //вид
+struct Mebel {
+    int x;   //расположение по x
+    int y;   //расположение по y
+    int o;   //тип объекта (шкаф, стол)
+    int v;   //вид объекта (красный шкаф, сломанный шкаф)
 };
 
-struct Mode {
-int best;
-int game;
-};
+const int GAME_MODE = 1;
+const int REDACTOR_MODE = 100;
 
+int mode = GAME_MODE;
 
+void draw_button(int x, int y, const char* text)
+{
+    txSetColour(RGB(0, 0, 0), 1);
+    txSetFillColour(RGB(255, 255, 255));
+    txSelectFont("Times New Roman", 25);
+    txRectangle(x, y,400,100);
+    txTextOut(x + 40, y + 40, text);
+}
 
 int main()
 {
-    txCreateWindow(1280,720);
+    txCreateWindow(800,720);
 
-    int risovatKartinku = 0;
+    int risovatKartinku = -1;
+    HDC tv = txLoadImage ("Icons\\телевизор.bmp");
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
+        txBegin();
         txSetFillColor(TX_BLACK);
         txClear();
 
-        txSetColour(RGB(255, 255, 255), 25);
+        txSetColour(RGB(0, 0, 0), 1);
         txSetFillColour(RGB(255, 255, 255));
-        txRectangle(100,200,300,300);
+        txSelectFont("Times New Roman", 25);
+        draw_button(0, 0, "Телевизор");
+        draw_button(200, 0, "Стул");
 
         if (txMouseButtons() & 1
-            && txMouseX() >= 100
-            && txMouseX() <= 300
-            && txMouseY() >= 200
-            && txMouseY() <= 300)
-            risovatKartinku = 1;
-        if (txMouseButtons() & 2
-            && txMouseX() >= 100
-            && txMouseX() <= 300
-            && txMouseY() >= 200
-            && txMouseY() <= 300)
-            risovatKartinku = 0;
+            && txMouseX() >= 0
+            && txMouseX() <= 200
+            && txMouseY() >= 0
+            && txMouseY() <= 100)
+        {
+            risovatKartinku = -risovatKartinku;
+            txSleep(100);
+        }
 
         if (risovatKartinku == 1)
-            txRectangle (400, 500, 600, 600);
+        {
+            txBitBlt (txDC(), 500, 500, 30, 30, tv, 0, 0);
+        }
+
         txSleep (10);
+        txEnd();
     }
 
-    begin (0);
-
-
+    txDeleteDC (tv);
 
     return 0;
 }
