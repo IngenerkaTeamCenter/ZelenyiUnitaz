@@ -11,10 +11,19 @@
 using namespace std;
 
 struct Mebel {
-    int x;   //расположение по x
-    int y;   //расположение по y
-    int o;   //тип объекта (шкаф, стол)
-    int v;   //вид объекта (красный шкаф, сломанный шкаф)
+    int mx;   //расположение по x
+    int my;   //расположение по y
+    int mo;   //тип объекта (шкаф, стол)
+    int mv;   //вид объекта (красный шкаф, сломанный шкаф)
+};
+
+struct Button {
+    int bx;
+    int by;
+    int bt;
+    int bp;
+
+
 };
 
 const int GAME_MODE = 1;
@@ -38,6 +47,10 @@ int main()
     int risovatKartinku = -1;
     HDC tv = txLoadImage ("Icons\\телевизор.bmp");
 
+
+  //  int risovatKartinku = 1;
+    HDC du = txLoadImage ("Icons\\духовка.bmp");
+
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
@@ -59,6 +72,15 @@ int main()
             risovatKartinku = -risovatKartinku;
             txSleep(100);
         }
+        if (txMouseButtons() & 1
+            && txMouseX() >= 200
+            && txMouseX() <= 200
+            && txMouseY() >= 0
+            && txMouseY() <= 100)
+        {
+            risovatKartinku = risovatKartinku;
+            txSleep(100);
+        }
 
         if (risovatKartinku == 1)
         {
@@ -70,6 +92,7 @@ int main()
     }
 
     txDeleteDC (tv);
+    txDeleteDC (du);
 
     return 0;
 }
