@@ -17,18 +17,25 @@ struct Mebel {
     int v;   //вид объекта (красный шкаф, сломанный шкаф)
 };
 
+struct Knopka{
+    int x;
+    int y;
+    const char* text;
+
+};
+
 const int GAME_MODE = 1;
 const int REDACTOR_MODE = 100;
 
 int mode = GAME_MODE;
 
-void draw_button(int x, int y, const char* text)
+void draw_button(Knopka k)
 {
     txSetColour(RGB(0, 0, 0), 1);
     txSetFillColour(RGB(255, 255, 255));
     txSelectFont("Times New Roman", 25);
-    txRectangle(x, y,400,100);
-    txTextOut(x + 40, y + 40, text);
+    txRectangle(k.x,k.y,k.x+400,k.y+100);
+    txTextOut(k.x, k.y + 40, k.text);
 }
 
 int main()
@@ -37,6 +44,8 @@ int main()
 
     int risovatKartinku = -1;
     HDC tv = txLoadImage ("Icons\\телевизор.bmp");
+
+    Knopka k = {0, 0, "Телевизор"};
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -47,8 +56,8 @@ int main()
         txSetColour(RGB(0, 0, 0), 1);
         txSetFillColour(RGB(255, 255, 255));
         txSelectFont("Times New Roman", 25);
-        draw_button(0, 0, "Телевизор");
-        draw_button(200, 0, "Стул");
+        draw_button(k);
+        //draw_button(k.x+200, k.y, "Стул");
 
         if (txMouseButtons() & 1
             && txMouseX() >= 0
