@@ -22,7 +22,7 @@ const int REDACTOR_MODE = 100;
 
 int mode = GAME_MODE;
 
-void draw_button(int x, int y, const char* text)
+cvoid draw_button(int x, int y, const char* text)
 {
     txSetColour(RGB(0, 0, 0), 1);
     txSetFillColour(RGB(255, 255, 255));
@@ -31,15 +31,15 @@ void draw_button(int x, int y, const char* text)
     txTextOut(x + 40, y + 40, text);
 }
 
-void btn_click (int x, int y, int xx, int yy, int* risovatKartinku)
+void btn_click (int x, int y, int xx, int yy, int risovatKartinku)
 {
-    if (txMouseButtons() & 1
+    if (txMouseButtons() == 1
         && txMouseX() >= x
         && txMouseX() <= y
         && txMouseY() >= xx
         && txMouseY() <= yy)
     {
-        *risovatKartinku = - *risovatKartinku;
+        risovatKartinku = -risovatKartinku;
         txSleep(100);
     }
 
@@ -64,7 +64,7 @@ int main()
         draw_button(0, 0, "Телевизор");
         draw_button(200, 0, "Стул");
 
-        btn_click (0,200,0,100, &risovatKartinku);      //0 200 0 100
+        btn_click (0,200,0,100, risovatKartinku);      //0 200 0 100
 
 
         if (risovatKartinku == 1)
