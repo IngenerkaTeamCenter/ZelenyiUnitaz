@@ -52,6 +52,9 @@ int main()
     int risovatKartinku = -1;
     HDC tv = txLoadImage ("Icons\\телевизор.bmp");
 
+    int risovatKartinku2 = 1;
+    HDC chair = txLoadImage ("Icons\\стул.bmp");
+
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
@@ -63,8 +66,10 @@ int main()
         txSelectFont("Times New Roman", 25);
         draw_button(0, 0, "Телевизор");
         draw_button(200, 0, "Стул");
+        draw_button(400, 0, "Стол");
 
         btn_click (0,200,0,100, &risovatKartinku);      //0 200 0 100
+        btn_click(200,200,0,100, &risovatKartinku2 );
 
 
         if (risovatKartinku == 1)
@@ -72,11 +77,17 @@ int main()
             txBitBlt (txDC(), 500, 500, 30, 30, tv, 0, 0);
         }
 
+         if (risovatKartinku2 == 1)
+        {
+            txBitBlt (txDC(), 500, 600, 30, 30, chair, 0, 0);
+        }
+
         txSleep (10);
         txEnd();
     }
 
     txDeleteDC (tv);
+    txDeleteDC (chair);
 
     return 0;
 }
