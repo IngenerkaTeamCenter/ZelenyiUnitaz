@@ -2,26 +2,19 @@
 #include "Lib\\TXLib.h"
 
 /*
-1) Ã‘Ã²Ã°Ã³ÃªÃ²Ã³Ã°Ã  Ã¤Ã«Ã¿ ÃªÃ­Ã®Ã¯ÃªÃ¨ (Ã¢ ÃªÃ®Ã²Ã®Ã°Ã®Ã© Ã¥Ã±Ã²Ã¼ Ã¥Ã¹Â¸ Ã¨ ÃªÃ Ã°Ã²Ã¨Ã­ÃªÃ )
-2) ÃÃ®Ã°Ã¬Ã Ã«Ã¼Ã­Ã®Ã¥ Ã¬Ã¥Ã­Ã¾
-3) Ã‘Ã¤Ã¥Ã«Ã Ã²Ã¼ Ã­Ã Ã¦Ã Ã²Ã¨Ã¥ Ã­Ã  ÃªÃ­Ã®Ã¯ÃªÃ³ Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¥Ã©
-4) Ã‚Ã»Ã¢Ã®Ã¤Ã¨Ã²Ã¼ Ã°Ã Ã§Ã­Ã»Ã¥ ÃªÃ Ã°Ã²Ã¨Ã­ÃªÃ¨ Ã¯Ã® Ã­Ã Ã¦Ã Ã²Ã¨Ã¾ Ã­Ã  Ã°Ã Ã§Ã­Ã»Ã¥ ÃªÃ­Ã®Ã¯ÃªÃ¨
+1) Ñòðóêòóðà äëÿ êíîïêè (â êîòîðîé åñòü åù¸ è êàðòèíêà)
+2) Íîðìàëüíîå ìåíþ
+3) Ñäåëàòü íàæàòèå íà êíîïêó ôóíêöèåé
+4) Âûâîäèòü ðàçíûå êàðòèíêè ïî íàæàòèþ íà ðàçíûå êíîïêè
 */
 
 using namespace std;
 
 struct Mebel {
-    int x;   //Ã°Ã Ã±Ã¯Ã®Ã«Ã®Ã¦Ã¥Ã­Ã¨Ã¥ Ã¯Ã® x
-    int y;   //Ã°Ã Ã±Ã¯Ã®Ã«Ã®Ã¦Ã¥Ã­Ã¨Ã¥ Ã¯Ã® y
-    int o;   //Ã²Ã¨Ã¯ Ã®Ã¡ÃºÃ¥ÃªÃ²Ã  (Ã¸ÃªÃ Ã´, Ã±Ã²Ã®Ã«)
-    int v;   //Ã¢Ã¨Ã¤ Ã®Ã¡ÃºÃ¥ÃªÃ²Ã  (ÃªÃ°Ã Ã±Ã­Ã»Ã© Ã¸ÃªÃ Ã´, Ã±Ã«Ã®Ã¬Ã Ã­Ã­Ã»Ã© Ã¸ÃªÃ Ã´)
-};
-
-struct Knopka{
-    int x;
-    int y;
-    const char* text;
-
+    int x;   //ðàñïîëîæåíèå ïî x
+    int y;   //ðàñïîëîæåíèå ïî y
+    int o;   //òèï îáúåêòà (øêàô, ñòîë)
+    int v;   //âèä îáúåêòà (êðàñíûé øêàô, ñëîìàííûé øêàô)
 };
 
 const int GAME_MODE = 1;
@@ -29,36 +22,58 @@ const int REDACTOR_MODE = 100;
 
 int mode = GAME_MODE;
 
-void draw_button(Knopka k)
+void draw_button(int x, int y, const char* text)
 {
     txSetColour(RGB(0, 0, 0), 1);
     txSetFillColour(RGB(255, 255, 255));
     txSelectFont("Times New Roman", 25);
-    txRectangle(k.x,k.y,k.x+400,k.y+100);
-    txTextOut(k.x, k.y + 40, k.text);
+    txRectangle(x, y,400,100);
+    txTextOut(x + 40, y + 40, text);
 }
 
-void btn_click (int x, int y, int xx, int yy, int risovatKartinku)
+void Level_1 (HDC TV, HDC Chair, HDC Table, HDC Bed)
 {
-    if (txMouseButtons() == 1
+      txBitBlt (txDC(), 200, 200, 30, 30, TV);
+      txBitBlt (txDC(), 200, 400, 30, 30, TV);
+      txBitBlt (txDC(), 400, 200, 30, 30, TV);
+      txBitBlt (txDC(), 300, 200, 30, 30, Chair);
+      txBitBlt (txDC(), 200, 300, 30, 30, Chair);
+      txBitBlt (txDC(), 300, 300, 30, 30, Chair);
+      txBitBlt (txDC(), 600, 200, 30, 30, Table);
+}
+
+
+
+void btn_click (int x, int y, int xx, int yy, int* risovatKartinku)
+{
+    if (txMouseButtons() & 1
         && txMouseX() >= x
         && txMouseX() <= y
         && txMouseY() >= xx
         && txMouseY() <= yy)
     {
-        risovatKartinku = -risovatKartinku;
+        *risovatKartinku = - *risovatKartinku;
         txSleep(100);
     }
+
 }
 
 int main()
 {
+
     txCreateWindow(800,720);
 
-    int risovatKartinku = -1;
-    HDC tv = txLoadImage ("Icons\\Ã²Ã¥Ã«Ã¥Ã¢Ã¨Ã§Ã®Ã°.bmp");
 
-    Knopka k = {0, 0, "Ã’Ã¥Ã«Ã¥Ã¢Ã¨Ã§Ã®Ã°"};
+    int risovatKartinku = -1;
+    HDC tv = txLoadImage ("Icons\\òåëåâèçîð.bmp");
+
+    int risovatKartinku2 = 1;
+    HDC chair = txLoadImage ("Icons\\ñòóë.bmp");
+
+    HDC  TV = txLoadImage ("Icons\\òåëåâèçîð.bmp");
+    HDC  Chair = txLoadImage ("Icons\\ñòóë.bmp");
+    HDC  Table = txLoadImage ("Icons\\ñòîë.bmp");
+    HDC  Bed = txLoadImage ("Icons\\êðîâàòü.bmp");
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -69,20 +84,37 @@ int main()
         txSetColour(RGB(0, 0, 0), 1);
         txSetFillColour(RGB(255, 255, 255));
         txSelectFont("Times New Roman", 25);
-        draw_button(k);
-        
-        btn_click (0,200,0,100, risovatKartinku);      //0 200 0 100
+        draw_button(0, 0, "Òåëåâèçîð");
+        draw_button(200, 0, "Ñòóë");
+        draw_button(400, 0, "Ñòîë");
+
+        btn_click (0,200,0,100, &risovatKartinku);      //0 200 0 100
+        btn_click(200,200,0,100, &risovatKartinku2 );
+
+        Level_1 (TV, Chair, Table, Bed) ;
 
         if (risovatKartinku == 1)
         {
             txBitBlt (txDC(), 500, 500, 30, 30, tv, 0, 0);
         }
 
+         if (risovatKartinku2 == 1)
+        {
+            txBitBlt (txDC(), 500, 600, 30, 30, chair, 0, 0);
+        }
+
         txSleep (10);
         txEnd();
     }
 
+
     txDeleteDC (tv);
+    txDeleteDC (chair);
+
+    txDeleteDC (TV);
+    txDeleteDC (Chair);
+    txDeleteDC (Table);
+    txDeleteDC (Bed);
 
     return 0;
 }
