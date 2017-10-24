@@ -2,19 +2,19 @@
 #include "Lib\\TXLib.h"
 
 /*
-1) Ñòðóêòóðà äëÿ êíîïêè (â êîòîðîé åñòü åù¸ è êàðòèíêà)
-2) Íîðìàëüíîå ìåíþ
-3) Ñäåëàòü íàæàòèå íà êíîïêó ôóíêöèåé
-4) Âûâîäèòü ðàçíûå êàðòèíêè ïî íàæàòèþ íà ðàçíûå êíîïêè
+1) Ã‘Ã²Ã°Ã³ÃªÃ²Ã³Ã°Ã  Ã¤Ã«Ã¿ ÃªÃ­Ã®Ã¯ÃªÃ¨ (Ã¢ ÃªÃ®Ã²Ã®Ã°Ã®Ã© Ã¥Ã±Ã²Ã¼ Ã¥Ã¹Â¸ Ã¨ ÃªÃ Ã°Ã²Ã¨Ã­ÃªÃ )
+2) ÃÃ®Ã°Ã¬Ã Ã«Ã¼Ã­Ã®Ã¥ Ã¬Ã¥Ã­Ã¾
+3) Ã‘Ã¤Ã¥Ã«Ã Ã²Ã¼ Ã­Ã Ã¦Ã Ã²Ã¨Ã¥ Ã­Ã  ÃªÃ­Ã®Ã¯ÃªÃ³ Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¥Ã©
+4) Ã‚Ã»Ã¢Ã®Ã¤Ã¨Ã²Ã¼ Ã°Ã Ã§Ã­Ã»Ã¥ ÃªÃ Ã°Ã²Ã¨Ã­ÃªÃ¨ Ã¯Ã® Ã­Ã Ã¦Ã Ã²Ã¨Ã¾ Ã­Ã  Ã°Ã Ã§Ã­Ã»Ã¥ ÃªÃ­Ã®Ã¯ÃªÃ¨
 */
 
 using namespace std;
 
 struct Mebel {
-    int x;   //ðàñïîëîæåíèå ïî x
-    int y;   //ðàñïîëîæåíèå ïî y
-    int o;   //òèï îáúåêòà (øêàô, ñòîë)
-    int v;   //âèä îáúåêòà (êðàñíûé øêàô, ñëîìàííûé øêàô)
+    int x;   //Ã°Ã Ã±Ã¯Ã®Ã«Ã®Ã¦Ã¥Ã­Ã¨Ã¥ Ã¯Ã® x
+    int y;   //Ã°Ã Ã±Ã¯Ã®Ã«Ã®Ã¦Ã¥Ã­Ã¨Ã¥ Ã¯Ã® y
+    int o;   //Ã²Ã¨Ã¯ Ã®Ã¡ÃºÃ¥ÃªÃ²Ã  (Ã¸ÃªÃ Ã´, Ã±Ã²Ã®Ã«)
+    int v;   //Ã¢Ã¨Ã¤ Ã®Ã¡ÃºÃ¥ÃªÃ²Ã  (ÃªÃ°Ã Ã±Ã­Ã»Ã© Ã¸ÃªÃ Ã´, Ã±Ã«Ã®Ã¬Ã Ã­Ã­Ã»Ã© Ã¸ÃªÃ Ã´)
 };
 
 struct Knopka{
@@ -38,14 +38,27 @@ void draw_button(Knopka k)
     txTextOut(k.x, k.y + 40, k.text);
 }
 
+void btn_click (int x, int y, int xx, int yy, int risovatKartinku)
+{
+    if (txMouseButtons() == 1
+        && txMouseX() >= x
+        && txMouseX() <= y
+        && txMouseY() >= xx
+        && txMouseY() <= yy)
+    {
+        risovatKartinku = -risovatKartinku;
+        txSleep(100);
+    }
+}
+
 int main()
 {
     txCreateWindow(800,720);
 
     int risovatKartinku = -1;
-    HDC tv = txLoadImage ("Icons\\òåëåâèçîð.bmp");
+    HDC tv = txLoadImage ("Icons\\Ã²Ã¥Ã«Ã¥Ã¢Ã¨Ã§Ã®Ã°.bmp");
 
-    Knopka k = {0, 0, "Òåëåâèçîð"};
+    Knopka k = {0, 0, "Ã’Ã¥Ã«Ã¥Ã¢Ã¨Ã§Ã®Ã°"};
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -57,17 +70,8 @@ int main()
         txSetFillColour(RGB(255, 255, 255));
         txSelectFont("Times New Roman", 25);
         draw_button(k);
-        //draw_button(k.x+200, k.y, "Ñòóë");
-
-        if (txMouseButtons() & 1
-            && txMouseX() >= 0
-            && txMouseX() <= 200
-            && txMouseY() >= 0
-            && txMouseY() <= 100)
-        {
-            risovatKartinku = -risovatKartinku;
-            txSleep(100);
-        }
+        
+        btn_click (0,200,0,100, risovatKartinku);      //0 200 0 100
 
         if (risovatKartinku == 1)
         {
