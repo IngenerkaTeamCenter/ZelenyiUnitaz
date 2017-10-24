@@ -1,35 +1,25 @@
 #include <iostream>
 #include "Lib\\TXLib.h"
 
-/*
-1) Структура для кнопки (в которой есть ещё и картинка)
-2) Нормальное меню
-3) Сделать нажатие на кнопку функцией
-4) Выводить разные картинки по нажатию на разные кнопки
-*/
-
-using namespace std;
-
 struct Mebel {
-    int x;   //расположение по x
-    int y;   //расположение по y
-    int o;   //тип объекта (шкаф, стол)
-    int v;   //вид объекта (красный шкаф, сломанный шкаф)
+    int x;   //Г°Г Г±ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ ГЇГ® x
+    int y;   //Г°Г Г±ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ ГЇГ® y
+    int o;   //ГІГЁГЇ Г®ГЎГєГҐГЄГІГ  (ГёГЄГ Гґ, Г±ГІГ®Г«)
+    int v;   //ГўГЁГ¤ Г®ГЎГєГҐГЄГІГ  (ГЄГ°Г Г±Г­Г»Г© ГёГЄГ Гґ, Г±Г«Г®Г¬Г Г­Г­Г»Г© ГёГЄГ Гґ)
+};
+
+struct Knopka {
+    int x;
+    int y;
+    const char* text;
+    int risovatKartinku;
+    HDC kartinka;
 };
 
 const int GAME_MODE = 1;
 const int REDACTOR_MODE = 100;
 
 int mode = GAME_MODE;
-
-void draw_button(int x, int y, const char* text)
-{
-    txSetColour(RGB(0, 0, 0), 1);
-    txSetFillColour(RGB(255, 255, 255));
-    txSelectFont("Times New Roman", 25);
-    txRectangle(x, y,400,100);
-    txTextOut(x + 40, y + 40, text);
-}
 
 void Level_1 (HDC TV, HDC Chair, HDC Table, HDC Bed)
 {
@@ -42,20 +32,26 @@ void Level_1 (HDC TV, HDC Chair, HDC Table, HDC Bed)
       txBitBlt (txDC(), 600, 200, 30, 30, Table);
 }
 
+void draw_button(Knopka knop)
+{
+    txSetColour(RGB(0, 0, 0), 1);
+    txSetFillColour(RGB( 195, 195, 195));
+    txSelectFont("Times New Roman", 25);
+    txRectangle(knop.x,knop.y,knop.x+200,knop.y+100);
+    txDrawText(knop.x, knop.y + 40, knop.x + 200, knop.y + 100, knop.text, DT_CENTER);
+}
 
-
-void btn_click (int x, int y, int xx, int yy, int* risovatKartinku)
+void btn_click (Knopka* knop)
 {
     if (txMouseButtons() & 1
-        && txMouseX() >= x
-        && txMouseX() <= y
-        && txMouseY() >= xx
-        && txMouseY() <= yy)
+        && txMouseX() >= knop->x
+        && txMouseX() <= knop->x + 200
+        && txMouseY() >= knop->y
+        && txMouseY() <= knop->y + 100)
     {
-        *risovatKartinku = - *risovatKartinku;
+        knop->risovatKartinku = -knop->risovatKartinku;
         txSleep(100);
     }
-
 }
 
 int main()
@@ -63,39 +59,40 @@ int main()
 
     txCreateWindow(800,720);
 
+    HDC tv = txLoadImage ("Icons\\tv.bmp");
 
-    int risovatKartinku = -1;
-    HDC tv = txLoadImage ("Icons\\телевизор.bmp");
+    HDC chair = txLoadImage ("Icons\\СЃС‚СѓР».bmp");
 
-    int risovatKartinku2 = 1;
-    HDC chair = txLoadImage ("Icons\\стул.bmp");
-
-    HDC  TV = txLoadImage ("Icons\\телевизор.bmp");
-    HDC  Chair = txLoadImage ("Icons\\стул.bmp");
-    HDC  Table = txLoadImage ("Icons\\стол.bmp");
-    HDC  Bed = txLoadImage ("Icons\\кровать.bmp");
+    HDC  TV = txLoadImage ("Icons\\С‚РµР»РµРІРёР·РѕСЂ.bmp");
+    HDC  Chair = txLoadImage ("Icons\\СЃС‚СѓР».bmp");
+    HDC  Table = txLoadImage ("Icons\\СЃС‚РѕР».bmp");
+    HDC  Bed = txLoadImage ("Icons\\РєСЂРѕРІР°С‚СЊ.bmp");
+    
+    Knopka knopki_dlya_menu[10];
+    knopki_dlya_menu[0] = {0, 0, "vanna", -1, tv};
+    knopki_dlya_menu[1] = {200, 0, "zal", -1, tv};
+    knopki_dlya_menu[2] = {400, 0, "kuxnua", -1, tv};
+    knopki_dlya_menu[3] = {600, 0, "spalnua", -1, tv};
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
-        txSetFillColor(TX_BLACK);
+        txSetFillColor(RGB(112, 146, 190));
         txClear();
-
-        txSetColour(RGB(0, 0, 0), 1);
-        txSetFillColour(RGB(255, 255, 255));
-        txSelectFont("Times New Roman", 25);
-        draw_button(0, 0, "Телевизор");
-        draw_button(200, 0, "Стул");
-        draw_button(400, 0, "Стол");
-
-        btn_click (0,200,0,100, &risovatKartinku);      //0 200 0 100
-        btn_click(200,200,0,100, &risovatKartinku2 );
 
         Level_1 (TV, Chair, Table, Bed) ;
 
-        if (risovatKartinku == 1)
+        for (int nomer_knopki = 0;
+             nomer_knopki < 4;
+             nomer_knopki++)
         {
-            txBitBlt (txDC(), 500, 500, 30, 30, tv, 0, 0);
+            draw_button(knopki_dlya_menu[nomer_knopki]);
+            btn_click (&knopki_dlya_menu[nomer_knopki]);
+        }
+
+        if (knopki_dlya_menu[0].risovatKartinku == 1)
+        {
+            txBitBlt (txDC(), 500, 500, 30, 30, knopki_dlya_menu[0].kartinka, 0, 0);
         }
 
          if (risovatKartinku2 == 1)
@@ -107,6 +104,10 @@ int main()
         txEnd();
     }
 
+    for (int nomer_knopki = 0; nomer_knopki < 1; nomer_knopki++)
+    {
+        txDeleteDC (knopki_dlya_menu[nomer_knopki].kartinka);
+    }
 
     txDeleteDC (tv);
     txDeleteDC (chair);
