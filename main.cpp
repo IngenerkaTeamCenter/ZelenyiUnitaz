@@ -32,13 +32,15 @@ int mode = GAME_MODE;
 void draw_button(Knopka k)
 {
     txSetColour(RGB(0, 0, 0), 1);
-    txSetFillColour(RGB(255, 255, 255));
+    txSetFillColour(RGB( 195, 195, 195));
     txSelectFont("Times New Roman", 25);
-    txRectangle(k.x,k.y,k.x+400,k.y+100);
-    txTextOut(k.x, k.y + 40, k.text);
+    txRectangle(k.x,k.y,k.x+200,k.y+100);
+    //txTextOut(k.x, k.y + 40, k.text);
+    txDrawText(k.x, k.y + 40, k.x + 200, k.y + 100, k.text, DT_CENTER);
+
 }
 
-void btn_click (int x, int y, int xx, int yy, int risovatKartinku)
+void btn_click (int x, int y, int xx, int yy, int* risovatKartinku)
 {
     if (txMouseButtons() == 1
         && txMouseX() >= x
@@ -46,7 +48,7 @@ void btn_click (int x, int y, int xx, int yy, int risovatKartinku)
         && txMouseY() >= xx
         && txMouseY() <= yy)
     {
-        risovatKartinku = -risovatKartinku;
+        *risovatKartinku = - *risovatKartinku;
         txSleep(100);
     }
 }
@@ -56,22 +58,33 @@ int main()
     txCreateWindow(800,720);
 
     int risovatKartinku = -1;
-    HDC tv = txLoadImage ("Icons\\òåëåâèçîð.bmp");
+    HDC tv = txLoadImage ("Icons\\tv.bmp");
 
-    Knopka k = {0, 0, "Òåëåâèçîð"};
+    Knopka knopki_dlya_menu [4];
+
+    knopki_dlya_menu[0] = {0, 0, "vanna"};
+    knopki_dlya_menu[1] = {200, 0, "zal"};
+    knopki_dlya_menu[2] = {400, 0, "kuxnua"};
+    knopki_dlya_menu[3] = {600, 0, "spalnua"};
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
-        txSetFillColor(TX_BLACK);
+        txSetFillColor(RGB(112, 146, 190));
         txClear();
 
         txSetColour(RGB(0, 0, 0), 1);
         txSetFillColour(RGB(255, 255, 255));
         txSelectFont("Times New Roman", 25);
-        draw_button(k);
-        
-        btn_click (0,200,0,100, risovatKartinku);      //0 200 0 100
+
+        for (int nomer_knopki = 0;
+             nomer_knopki < 4;
+             nomer_knopki++)
+        {
+            draw_button(knopki_dlya_menu[nomer_knopki]);
+        }
+
+
 
         if (risovatKartinku == 1)
         {
