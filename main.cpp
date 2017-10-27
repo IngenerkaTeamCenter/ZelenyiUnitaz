@@ -1,11 +1,12 @@
 #include <iostream>
 #include "Lib\\TXLib.h"
+#include "Lib\\Const.cpp"
 
 struct Mebel {
-    int x;   //расположение по x
-    int y;   //расположение по y
-    int o;   //тип объекта (шкаф, стол)
-    int v;   //вид объекта (красный шкаф, сломанный шкаф)
+    int x;   //ðàñïîëîæåíèå ïî x
+    int y;   //ðàñïîëîæåíèå ïî y
+    int o;   //òèï îáúåêòà (øêàô, ñòîë)
+    int v;   //âèä îáúåêòà (êðàñíûé øêàô, ñëîìàííûé øêàô)
 };
 
 struct Knopka {
@@ -15,9 +16,6 @@ struct Knopka {
     int risovatKartinku;
     HDC kartinka;
 };
-
-const int GAME_MODE = 1;
-const int REDACTOR_MODE = 100;
 
 int mode = GAME_MODE;
 
@@ -57,22 +55,23 @@ void btn_click (Knopka* knop)
 int main()
 {
 
-    txCreateWindow(800,720);
+    txCreateWindow(1000,720);
 
     HDC tv = txLoadImage ("Icons\\tv.bmp");
 
-    HDC chair = txLoadImage ("Icons\\стул.bmp");
+    HDC chair = txLoadImage ("Icons\\tv.bmp");
 
-    HDC  TV = txLoadImage ("Icons\\телевизор.bmp");
-    HDC  Chair = txLoadImage ("Icons\\стул.bmp");
-    HDC  Table = txLoadImage ("Icons\\стол.bmp");
-    HDC  Bed = txLoadImage ("Icons\\кровать.bmp");
+    HDC  TV = txLoadImage ("Icons\\tv.bmp");
+    HDC  Chair = txLoadImage ("Icons\\tv.bmp");
+    HDC  Table = txLoadImage ("Icons\\tv.bmp");
+    HDC  Bed = txLoadImage ("Icons\\tv.bmp");
 
-    Knopka knopki_dlya_menu[10];
+    Knopka knopki_dlya_menu[KOLVO_KNOPOK];
     knopki_dlya_menu[0] = {0, 0, "vanna", -1, tv};
     knopki_dlya_menu[1] = {200, 0, "zal", -1, tv};
     knopki_dlya_menu[2] = {400, 0, "kuxnua", -1, tv};
     knopki_dlya_menu[3] = {600, 0, "spalnua", -1, tv};
+    knopki_dlya_menu[4] = {800, 0, "spalnua", -1, tv};
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -83,34 +82,35 @@ int main()
         Level_1 (TV, Chair, Table, Bed) ;
 
         for (int nomer_knopki = 0;
-             nomer_knopki < 4;
+             nomer_knopki < KOLVO_KNOPOK;
              nomer_knopki++)
         {
             draw_button(knopki_dlya_menu[nomer_knopki]);
             btn_click (&knopki_dlya_menu[nomer_knopki]);
         }
 
-        if (knopki_dlya_menu[0].risovatKartinku == 1)
+        for (int nomer_knopki = 0;
+             nomer_knopki < KOLVO_KNOPOK;
+             nomer_knopki++)
         {
-            txBitBlt (txDC(), 500, 500, 30, 30, knopki_dlya_menu[0].kartinka, 0, 0);
-        }
-
-         if (risovatKartinku2 == 1)
-        {
-            txBitBlt (txDC(), 500, 600, 30, 30, chair, 0, 0);
+            if (knopki_dlya_menu[nomer_knopki].risovatKartinku == 1)
+            {
+                txBitBlt (txDC(), 500, 500, 30, 30, knopki_dlya_menu[nomer_knopki].kartinka, 0, 0);
+            }
         }
 
         txSleep (10);
         txEnd();
     }
 
-    for (int nomer_knopki = 0; nomer_knopki < 1; nomer_knopki++)
+    for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
     {
         txDeleteDC (knopki_dlya_menu[nomer_knopki].kartinka);
     }
 
     txDeleteDC (tv);
     txDeleteDC (chair);
+
     txDeleteDC (TV);
     txDeleteDC (Chair);
     txDeleteDC (Table);
