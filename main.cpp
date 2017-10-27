@@ -1,25 +1,7 @@
 #include <iostream>
 #include "Lib\\TXLib.h"
+#include "Lib\\lol.cpp"
 
-struct Mebel {
-    int x;   //расположение по x
-    int y;   //расположение по y
-    int o;   //тип объекта (шкаф, стол)
-    int v;   //вид объекта (красный шкаф, сломанный шкаф)
-};
-
-struct Knopka {
-    int x;
-    int y;
-    const char* text;
-    int risovatKartinku;
-    HDC kartinka;
-};
-
-const int GAME_MODE = 1;
-const int REDACTOR_MODE = 100;
-
-int mode = GAME_MODE;
 
 void Level_1 (HDC TV, HDC Chair, HDC Table, HDC Bed)
 {
@@ -32,28 +14,6 @@ void Level_1 (HDC TV, HDC Chair, HDC Table, HDC Bed)
       txBitBlt (txDC(), 600, 200, 30, 30, Table);
 }
 
-void draw_button(Knopka knop)
-{
-    txSetColour(RGB(0, 0, 0), 1);
-    txSetFillColour(RGB( 195, 195, 195));
-    txSelectFont("Times New Roman", 25);
-    txRectangle(knop.x,knop.y,knop.x+200,knop.y+100);
-    txDrawText(knop.x, knop.y + 40, knop.x + 200, knop.y + 100, knop.text, DT_CENTER);
-}
-
-void btn_click (Knopka* knop)
-{
-    if (txMouseButtons() & 1
-        && txMouseX() >= knop->x
-        && txMouseX() <= knop->x + 200
-        && txMouseY() >= knop->y
-        && txMouseY() <= knop->y + 100)
-    {
-        knop->risovatKartinku = -knop->risovatKartinku;
-        txSleep(100);
-    }
-}
-
 int main()
 {
 
@@ -61,12 +21,12 @@ int main()
 
     HDC tv = txLoadImage ("Icons\\tv.bmp");
 
-    HDC chair = txLoadImage ("Icons\\стул.bmp");
+    HDC chair = txLoadImage ("Icons\\tv.bmp");
 
-    HDC  TV = txLoadImage ("Icons\\телевизор.bmp");
-    HDC  Chair = txLoadImage ("Icons\\стул.bmp");
-    HDC  Table = txLoadImage ("Icons\\стол.bmp");
-    HDC  Bed = txLoadImage ("Icons\\кровать.bmp");
+    HDC  TV = txLoadImage ("Icons\\tv.bmp");
+    HDC  Chair = txLoadImage ("Icons\\tv.bmp");
+    HDC  Table = txLoadImage ("Icons\\tv.bmp");
+    HDC  Bed = txLoadImage ("Icons\\tv.bmp");
 
     Knopka knopki_dlya_menu[10];
     knopki_dlya_menu[0] = {0, 0, "vanna", -1, tv};
@@ -93,11 +53,6 @@ int main()
         if (knopki_dlya_menu[0].risovatKartinku == 1)
         {
             txBitBlt (txDC(), 500, 500, 30, 30, knopki_dlya_menu[0].kartinka, 0, 0);
-        }
-
-         if (risovatKartinku2 == 1)
-        {
-            txBitBlt (txDC(), 500, 600, 30, 30, chair, 0, 0);
         }
 
         txSleep (10);
