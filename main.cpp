@@ -2,10 +2,10 @@
 #include "Lib\\TXLib.h"
 
 struct Mebel {
-    int x;   //ðàñïîëîæåíèå ïî x
-    int y;   //ðàñïîëîæåíèå ïî y
-    int o;   //òèï îáúåêòà (øêàô, ñòîë)
-    int v;   //âèä îáúåêòà (êðàñíûé øêàô, ñëîìàííûé øêàô)
+    int x;   //расположение по x
+    int y;   //расположение по y
+    int o;   //тип объекта (шкаф, стол)
+    int v;   //вид объекта (красный шкаф, сломанный шкаф)
 };
 
 struct Knopka {
@@ -67,7 +67,7 @@ int main()
     HDC  Chair = txLoadImage ("Icons\\стул.bmp");
     HDC  Table = txLoadImage ("Icons\\стол.bmp");
     HDC  Bed = txLoadImage ("Icons\\кровать.bmp");
-    
+
     Knopka knopki_dlya_menu[10];
     knopki_dlya_menu[0] = {0, 0, "vanna", -1, tv};
     knopki_dlya_menu[1] = {200, 0, "zal", -1, tv};
@@ -111,7 +111,6 @@ int main()
 
     txDeleteDC (tv);
     txDeleteDC (chair);
-
     txDeleteDC (TV);
     txDeleteDC (Chair);
     txDeleteDC (Table);
