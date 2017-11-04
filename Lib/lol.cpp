@@ -1,11 +1,8 @@
 struct Mebel {
-    int x;   //Г°Г Г±ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ ГЇГ® x
-    int y;   //Г°Г Г±ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ ГЇГ® y
-    //int o;   //ГІГЁГЇ Г®ГЎГєГҐГЄГІГ  (ГёГЄГ Гґ, Г±ГІГ®Г«)
-    //int v;   //ГўГЁГ¤ Г®ГЎГєГҐГЄГІГ  (ГЄГ°Г Г±Г­Г»Г© ГёГЄГ Гґ, Г±Г«Г®Г¬Г Г­Г­Г»Г© ГёГЄГ Гґ)
-    int shirina;
-    HDC kartinka;
-    int width;
+    int x;   //расположение по x
+    int y;   //расположение по y
+    int o;   //тип объекта (шкаф, стол)
+    int v;   //вид объекта (красный шкаф, сломанный шкаф)
 };
 
 struct Knopka {
@@ -18,6 +15,9 @@ struct Knopka {
 
 const int GAME_MODE = 1;
 const int REDACTOR_MODE = 100;
+
+int mode = GAME_MODE;
+
 
 void draw_button(Knopka knop)
 {
