@@ -8,13 +8,7 @@ struct Mebel {
     int width;
 };
 
-struct Knopka {
-    int x;
-    int y;
-    const char* text;
-    int risovatKartinku;
-    HDC kartinka;
-};
+
 
 const int GAME_MODE = 1;
 const int REDACTOR_MODE = 100;
