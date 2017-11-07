@@ -6,6 +6,7 @@ struct Knopka {
     const char* text;
     int risovatKartinku;
     HDC kartinka;
+    bool najata;
 };
 
 struct Knopka2 {
