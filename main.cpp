@@ -31,11 +31,11 @@ int main()
     HDC  Bed = txLoadImage ("Icons\\tv.bmp");
 
     Knopka knopki_dlya_menu[KOLVO_KNOPOK];
-    knopki_dlya_menu[0] = {0, 0, "vanna", -1, tv};
-    knopki_dlya_menu[1] = {200, 0, "zal", -1, tv};
-    knopki_dlya_menu[2] = {400, 0, "kuxnua", -1, tv};
-    knopki_dlya_menu[3] = {600, 0, "spalnua", -1, tv};
-    knopki_dlya_menu[4] = {800, 0, "spalnua", -1, tv};
+    knopki_dlya_menu[0] = {0, 0, "vanna", -1, tv, false};
+    knopki_dlya_menu[1] = {200, 0, "zal", -1, tv, false};
+    knopki_dlya_menu[2] = {400, 0, "kuxnua", -1, tv, false};
+    knopki_dlya_menu[3] = {600, 0, "spalnua", -1, tv, false};
+    knopki_dlya_menu[4] = {800, 0, "spalnua", -1, tv, false};
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -51,6 +51,7 @@ int main()
         {
             draw_button(knopki_dlya_menu[nomer_knopki]);
             btn_click (&knopki_dlya_menu[nomer_knopki]);
+            btn_navashdenie(&knopki_dlya_menu[nomer_knopki]);
         }
 
         for (int nomer_knopki = 0;
