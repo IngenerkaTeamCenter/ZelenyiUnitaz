@@ -2,19 +2,9 @@
 #include "Lib\\TXLib.h"
 #include "Lib\\Const.cpp"
 #include "Lib\\lol.cpp"
+#include "Lib\\lol.cpp"
 
 int mode = GAME_MODE;
-
-void Level_1 (HDC TV, HDC Chair, HDC Table, HDC Bed)
-{
-      txBitBlt (txDC(), 200, 200, 30, 30, TV);
-      txBitBlt (txDC(), 200, 400, 30, 30, TV);
-      txBitBlt (txDC(), 400, 200, 30, 30, TV);
-      txBitBlt (txDC(), 300, 200, 30, 30, Chair);
-      txBitBlt (txDC(), 200, 300, 30, 30, Chair);
-      txBitBlt (txDC(), 300, 300, 30, 30, Chair);
-      txBitBlt (txDC(), 600, 200, 30, 30, Table);
-}
 
 int main()
 {
