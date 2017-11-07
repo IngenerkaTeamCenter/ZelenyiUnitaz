@@ -1,5 +1,5 @@
+#pragma once
 #include "TXLib.h"
-
 
 const int GAME_MODE = 1;
 const int REDACTOR_MODE = 100;

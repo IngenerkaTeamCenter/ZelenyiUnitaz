@@ -1,13 +1,4 @@
-#include "TXLib.h"
-struct Mebel {
-    int x;   //ðàñïîëîæåíèå ïî x
-    int y;   //ðàñïîëîæåíèå ïî y
-    //int o;   //òèï îáúåêòà (øêàô, ñòîë)
-    //int v;   //âèä îáúåêòà (êðàñíûé øêàô, ñëîìàííûé øêàô)
-    int shirina;
-    HDC kartinka;
-    int width;
-};
+#include "Const.cpp"
 
 struct Knopka {
     int x;
@@ -15,7 +6,6 @@ struct Knopka {
     const char* text;
     int risovatKartinku;
     HDC kartinka;
-    bool najata;
 };
 
 struct Knopka2 {
@@ -26,6 +16,19 @@ struct Knopka2 {
     HDC kartinka;
     bool najata;
 };
+
+Knopka knopki_dlya_menu[KOLVO_KNOPOK];
+
+void Level_1 (HDC TV, HDC Chair, HDC Table, HDC Bed)
+{
+    txBitBlt (txDC(), 200, 200, 30, 30, TV);
+    txBitBlt (txDC(), 200, 400, 30, 30, TV);
+    txBitBlt (txDC(), 400, 200, 30, 30, TV);
+    txBitBlt (txDC(), 300, 200, 30, 30, Chair);
+    txBitBlt (txDC(), 200, 300, 30, 30, Chair);
+    txBitBlt (txDC(), 300, 300, 30, 30, Chair);
+    txBitBlt (txDC(), 600, 200, 30, 30, Table);
+}
 
 void draw_button(Knopka knop)
 {
@@ -44,7 +47,6 @@ void btn_click (Knopka* knop)
         && txMouseY() >= knop->y
         && txMouseY() <= knop->y + 100)
     {
-
         knop->risovatKartinku = -knop->risovatKartinku;
         txSleep(100);
     }
@@ -69,5 +71,14 @@ void btn_navashdenie (Knopka* knop)
     {
         knop->najata = false;
     }
+}
+
+void zap()
+{
+    knopki_dlya_menu[0] = {0, 0, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
+    knopki_dlya_menu[1] = {200, 0, "zal", -1, txLoadImage ("Icons\\technology\\PC_1.bmp")};
+    knopki_dlya_menu[2] = {400, 0, "kuxnua", -1, txLoadImage ("Icons\\table.bmp")};
+    knopki_dlya_menu[3] = {600, 0, "spalnua", -1, txLoadImage ("Icons\\bad.bmp")};
+    knopki_dlya_menu[4] = {800, 0, "spalnua", -1, txLoadImage ("Icons\\iPod_nano_6.bmp")};
 }
 
