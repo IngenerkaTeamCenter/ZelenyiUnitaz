@@ -40,7 +40,7 @@ int main()
         {
             if (knopki_dlya_menu[nomer_knopki].risovatKartinku == 1)
             {
-                txBitBlt (txDC(), knopki_dlya_menu[nomer_knopki].x+100, 500, 30, 30, knopki_dlya_menu[nomer_knopki].kartinka, 0, 0);
+                txBitBlt (txDC(), knopki_dlya_menu[nomer_knopki].x+ 100, 500, 30, 30, knopki_dlya_menu[nomer_knopki].kartinka, 0, 0);
             }
         }
 
