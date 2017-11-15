@@ -1,4 +1,5 @@
 #include "Const.cpp"
+#include "lol.cpp"
 
 struct Knopka {
     int x;
@@ -22,13 +23,21 @@ Knopka knopki_dlya_menu[KOLVO_KNOPOK];
 
 void Level_1 (HDC TV, HDC Chair, HDC Table, HDC Bed)
 {
-    txBitBlt (txDC(), 200, 200, 30, 30, TV);
-    txBitBlt (txDC(), 200, 400, 30, 30, TV);
-    txBitBlt (txDC(), 400, 200, 30, 30, TV);
-    txBitBlt (txDC(), 300, 200, 30, 30, Chair);
-    txBitBlt (txDC(), 200, 300, 30, 30, Chair);
-    txBitBlt (txDC(), 300, 300, 30, 30, Chair);
-    txBitBlt (txDC(), 600, 200, 30, 30, Table);
+      Mebel kartinci [8];
+      kartinci[0] = {200, 200, 30, TV, 30};
+      kartinci[1] = {200, 400, 30, TV, 30};
+      kartinci[2] = {400, 200, 30, TV, 30};
+      kartinci[3] = {300, 200, 30, TV, 30};
+      kartinci[4] = {200, 300, 30, TV, 30};
+      kartinci[5] = {300, 300, 30, TV, 30};
+      kartinci[6] = {600, 200, 30, TV, 30};
+
+      for(int nomer = 0; nomer < 7; nomer++)
+      {
+          txBitBlt(txDC(), kartinci[nomer].x,kartinci[nomer].y,
+              kartinci[nomer].shirina, kartinci[nomer].width,
+              kartinci[nomer].kartinka, 0, 0);
+      }
 }
 
 void draw_button(Knopka knop)
@@ -36,17 +45,17 @@ void draw_button(Knopka knop)
     txSetColour(RGB(0, 0, 0), 1);
     txSetFillColour(RGB( 195, 195, 195));
     txSelectFont("Times New Roman", 25);
-    txRectangle(knop.x,knop.y,knop.x+200,knop.y+100);
-    txDrawText(knop.x, knop.y + 40, knop.x + 200, knop.y + 100, knop.text, DT_CENTER);
+    txRectangle(knop.x,knop.y,knop.x+SHIRINA_KNOPKI,knop.y+VYSOTA_KNOPKI);
+    txDrawText(knop.x, knop.y + 40, knop.x + SHIRINA_KNOPKI, knop.y + VYSOTA_KNOPKI, knop.text, DT_CENTER);
 }
 
 void btn_click (Knopka* knop)
 {
     if (txMouseButtons() & 1
         && txMouseX() >= knop->x
-        && txMouseX() <= knop->x + 200
+        && txMouseX() <= knop->x + SHIRINA_KNOPKI
         && txMouseY() >= knop->y
-        && txMouseY() <= knop->y + 100)
+        && txMouseY() <= knop->y + VYSOTA_KNOPKI)
     {
         knop->risovatKartinku = -knop->risovatKartinku;
         txSleep(100);
@@ -56,19 +65,19 @@ void btn_click (Knopka* knop)
 void btn_navashdenie (Knopka* knop)
 {
     if (txMouseX() >= knop->x
-    && txMouseX() <= knop->x + 200
-    && txMouseY() >= knop->y
-    && txMouseY() <= knop->y + 100)
+        && txMouseX() <= knop->x + SHIRINA_KNOPKI
+        && txMouseY() >= knop->y
+        && txMouseY() <= knop->y + VYSOTA_KNOPKI)
     {
         knop->najata = true;
     }
 
     if (knop->najata)
-        txRectangle(knop->x, knop->y + 100, knop->x + 200, knop->y + 200);
+        txRectangle(knop->x, knop->y + VYSOTA_KNOPKI, knop->x + SHIRINA_KNOPKI, knop->y + VYSOTA_KNOPKI + VYSOTA_MENU);
 
     if (txMouseX() < knop->x
-    || txMouseX() > knop->x + 200
-    || txMouseY() > knop->y + 200)
+    || txMouseX() > knop->x + SHIRINA_KNOPKI
+    || txMouseY() > knop->y + VYSOTA_KNOPKI + VYSOTA_MENU)
     {
         knop->najata = false;
     }
@@ -77,9 +86,8 @@ void btn_navashdenie (Knopka* knop)
 void zap()
 {
     knopki_dlya_menu[0] = {0, 0, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[1] = {200, 0, "zal", -1, txLoadImage ("Icons\\technology\\PC_1.bmp")};
-    knopki_dlya_menu[2] = {400, 0, "kuxnua", -1, txLoadImage ("Icons\\table.bmp")};
-    knopki_dlya_menu[3] = {600, 0, "spalnua", -1, txLoadImage ("Icons\\bad.bmp")};
-    knopki_dlya_menu[4] = {800, 0, "spalnua", -1, txLoadImage ("Icons\\iPod_nano_6.bmp")};
+    knopki_dlya_menu[1] = {SHIRINA_KNOPKI, 0, "zal", -1, txLoadImage ("Icons\\technology\\PC_1.bmp")};
+    knopki_dlya_menu[2] = {2*SHIRINA_KNOPKI, 0, "kuxnua", -1, txLoadImage ("Icons\\table.bmp")};
+    knopki_dlya_menu[3] = {3*SHIRINA_KNOPKI, 0, "spalnua", -1, txLoadImage ("Icons\\bad.bmp")};
+    knopki_dlya_menu[4] = {4*SHIRINA_KNOPKI, 0, "spalnua", -1, txLoadImage ("Icons\\iPod_nano_6.bmp")};
 }
-
