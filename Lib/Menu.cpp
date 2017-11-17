@@ -49,7 +49,7 @@ void draw_button(Knopka knop)
     txDrawText(knop.x, knop.y + 40, knop.x + SHIRINA_KNOPKI, knop.y + VYSOTA_KNOPKI, knop.text, DT_CENTER);
 }
 
-void btn_click (Knopka* knop)
+void btn_click (Knopka* knop, HDC* kartinka)
 {
     if (txMouseButtons() & 1
         && txMouseX() >= knop->x
@@ -58,6 +58,7 @@ void btn_click (Knopka* knop)
         && txMouseY() <= knop->y + VYSOTA_KNOPKI)
     {
         knop->risovatKartinku = -knop->risovatKartinku;
+        *kartinka = knop->kartinka;
         txSleep(100);
     }
 }
