@@ -19,6 +19,8 @@ int main()
     bool risovat = false;
     int x = 0;
     int y = 0;
+    Mebel kartinki [8];
+    kartinki [0] = {-200,200,30,NULL,30};
 
     zap();
 
@@ -35,7 +37,7 @@ int main()
              nomer_knopki++)
         {
             draw_button(knopki_dlya_menu[nomer_knopki]);
-            btn_click (&knopki_dlya_menu[nomer_knopki], &kartinka);
+            btn_click (&knopki_dlya_menu[nomer_knopki], &kartinki[0].kartinka);
             btn_navashdenie(&knopki_dlya_menu[nomer_knopki]);
         }
 
@@ -49,15 +51,14 @@ int main()
             }
         }
         if (txMouseButtons() & 1
-            && txMouseY() > 100)
+            && txMouseY() > 200)
             {
-                risovat = true;
-                x = txMouseX();
-                y = txMouseY();
+                kartinki[0].x = txMouseX();
+                kartinki[0].y = txMouseY();
              }
-        if (risovat)
+        if (kartinki[0].kartinka != NULL)
         {
-            txBitBlt (txDC(), x, y, 30, 30, kartinka, 0, 0);
+            txBitBlt (txDC(), kartinki[0].x, kartinki[0].y, 30, 30, kartinki[0].kartinka, 0, 0);
         }
 
         txSleep (10);

@@ -90,5 +90,5 @@ void zap()
     knopki_dlya_menu[1] = {SHIRINA_KNOPKI, 0, "zal", -1, txLoadImage ("Icons\\technology\\PC_1.bmp")};
     knopki_dlya_menu[2] = {2*SHIRINA_KNOPKI, 0, "kuxnua", -1, txLoadImage ("Icons\\table.bmp")};
     knopki_dlya_menu[3] = {3*SHIRINA_KNOPKI, 0, "spalnua", -1, txLoadImage ("Icons\\bad.bmp")};
-    knopki_dlya_menu[4] = {4*SHIRINA_KNOPKI, 0, "spalnua", -1, txLoadImage ("Icons\\iPod_nano_6.bmp")};
+    knopki_dlya_menu[4] = {4*SHIRINA_KNOPKI, 0, "spalnua", -1, txLoadImage ("Icons\\technology\\iPod_nano_6.bmp")};
 }
