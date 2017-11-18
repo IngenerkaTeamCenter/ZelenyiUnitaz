@@ -19,8 +19,7 @@ int main()
         txSetFillColor(RGB(112, 146, 190));
         txClear();
 
-        //zapolnenie_kartinok();
-        read_file();
+        zapolnenie_kartinok();
 
         for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
         {
@@ -33,13 +32,11 @@ int main()
         {
             kartinki[0].x = txMouseX();
             kartinki[0].y = txMouseY();
-            kartinki[0].shirina = 30;
-            kartinki[0].vysota = 30;
         }
-
+        
         if (kartinki[0].kartinka != NULL)
         {
-            txBitBlt (txDC(), kartinki[0].x, kartinki[0].y, kartinki[0].shirina, kartinki[0].vysota, kartinki[0].kartinka, 0, 0);
+            txBitBlt (txDC(), kartinki[0].x, kartinki[0].y, 30, 30, kartinki[0].kartinka, 0, 0);
         }
 
         txSleep (10);

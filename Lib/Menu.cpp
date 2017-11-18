@@ -1,6 +1,5 @@
 #include "Const.cpp"
-#include "lol.cpp"
-
+#include "Mebel.cpp"
 
 struct Knopka2 {
     int x;
@@ -10,6 +9,7 @@ struct Knopka2 {
     HDC kartinka;
     bool najata;
 };
+
 struct Knopka {
     int x;
     int y;
@@ -23,23 +23,27 @@ struct Knopka {
 Knopka knopki_dlya_menu[KOLVO_KNOPOK];
 Knopka2 vtor_knop[KOLVO_KNOPOK];
 
-void Level_1 (HDC TV, HDC Chair, HDC Table, HDC Bed)
+void zapolnenie_kartinok()
 {
-      Mebel kartinci [8];
-      kartinci[0] = {200, 200, 30, TV, 30};
-      kartinci[1] = {200, 400, 30, TV, 30};
-      kartinci[2] = {400, 200, 30, TV, 30};
-      kartinci[3] = {300, 200, 30, TV, 30};
-      kartinci[4] = {200, 300, 30, TV, 30};
-      kartinci[5] = {300, 300, 30, TV, 30};
-      kartinci[6] = {600, 200, 30, TV, 30};
+    HDC  TV = txLoadImage ("Icons\\tv.bmp");
 
-      for(int nomer = 0; nomer < 7; nomer++)
-      {
-          txBitBlt(txDC(), kartinci[nomer].x,kartinci[nomer].y,
-              kartinci[nomer].shirina, kartinci[nomer].width,
-              kartinci[nomer].kartinka, 0, 0);
-      }
+    Mebel kartinci [8];
+    kartinci[0] = {200, 200, 30, TV, 30};
+    kartinci[1] = {200, 400, 30, TV, 30};
+    kartinci[2] = {400, 200, 30, TV, 30};
+    kartinci[3] = {300, 200, 30, TV, 30};
+    kartinci[4] = {200, 300, 30, TV, 30};
+    kartinci[5] = {300, 300, 30, TV, 30};
+    kartinci[6] = {600, 200, 30, TV, 30};
+
+    for (int nomer = 0; nomer < 7; nomer++)
+    {
+        txBitBlt(txDC(), kartinci[nomer].x, kartinci[nomer].y,
+            kartinci[nomer].shirina, kartinci[nomer].vysota,
+            kartinci[nomer].kartinka, 0, 0);
+    }
+
+    txDeleteDC (TV);
 }
 
 void draw_button(Knopka knop)
@@ -90,7 +94,7 @@ void btn_navashdenie (Knopka* knop)
 
 
         draw_button2(knop->knopki[0]);
-        draw_button2(knop->knopki[1]);
+        //draw_button2(knop->knopki[1]);
     }
     if (txMouseX() < knop->x
     || txMouseX() > knop->x + SHIRINA_KNOPKI
@@ -100,7 +104,7 @@ void btn_navashdenie (Knopka* knop)
     }
 }
 
-void zap()
+void zapolnenie_menu()
 {
     knopki_dlya_menu[0] = {0, 0, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
     knopki_dlya_menu[1] = {SHIRINA_KNOPKI, 0, "zal", -1, txLoadImage ("Icons\\technology\\PC_1.bmp")};

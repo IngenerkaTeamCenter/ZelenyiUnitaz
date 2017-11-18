@@ -1,3 +1,5 @@
+#pragma once
+
 #include "TXLib.h"
 #include <iostream>
 #include <fstream>
@@ -5,13 +7,11 @@
 
 using namespace std;
 
-int main()
+void read_file()
 {
-    txCreateWindow(800, 600);
-
     ifstream map_file;
     string stroka_s_kartinkoi;
-    map_file.open("..\\ZelenyiUnitaz-master\\Files\\Map.txt");
+    map_file.open("Files\\Map.txt");
 
     while (map_file.good()) {
 
