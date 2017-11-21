@@ -18,6 +18,7 @@ struct Knopka {
     HDC kartinka;
     bool najata;
     Knopka2 knopki[15];
+    int kolvo_knopok;
 };
 
 Knopka knopki_dlya_menu[KOLVO_KNOPOK];
@@ -92,9 +93,10 @@ void btn_navashdenie (Knopka* knop)
     {
         txRectangle(knop->x, knop->y + VYSOTA_KNOPKI, knop->x + SHIRINA_KNOPKI, knop->y + VYSOTA_KNOPKI + VYSOTA_MENU);
 
-
-        draw_button2(knop->knopki[0]);
-        //draw_button2(knop->knopki[1]);
+        for (int i = 0; i < knop->kolvo_knopok; i++)
+        {
+            draw_button2(knop->knopki[i]);
+        }
     }
     if (txMouseX() < knop->x
     || txMouseX() > knop->x + SHIRINA_KNOPKI
@@ -112,9 +114,15 @@ void zapolnenie_menu()
     knopki_dlya_menu[3] = {3*SHIRINA_KNOPKI, 0, "spalnua", -1, txLoadImage ("Icons\\bad.bmp")};
     knopki_dlya_menu[4] = {4*SHIRINA_KNOPKI, 0, "spalnua", -1, txLoadImage ("Icons\\iPod_nano_6.bmp")};
 
-    knopki_dlya_menu[0].knopki[0] = {0, 200, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[0].knopki[1] = {0, 300, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[1].knopki[0] = {SHIRINA_KNOPKI, 200, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
+    knopki_dlya_menu[0].knopki[0] = {0, 100, "vanna1", -1, txLoadImage ("Icons\\chair.bmp")};
+    knopki_dlya_menu[0].knopki[1] = {0, 200, "vanna2", -1, txLoadImage ("Icons\\tv.bmp")};
+    knopki_dlya_menu[0].knopki[2] = {0, 300, "vanna3", -1, txLoadImage ("Icons\\tv.bmp")};
+    knopki_dlya_menu[0].knopki[3] = {0, 400, "vanna4", -1, txLoadImage ("Icons\\tv.bmp")};
+    knopki_dlya_menu[0].knopki[4] = {0, 500, "vanna5", -1, txLoadImage ("Icons\\tv.bmp")};
+    knopki_dlya_menu[0].kolvo_knopok = 5;
+
+    knopki_dlya_menu[1].knopki[0] = {SHIRINA_KNOPKI,   200, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
+    knopki_dlya_menu[1].kolvo_knopok = 1;
     knopki_dlya_menu[2].knopki[0] = {2*SHIRINA_KNOPKI, 200, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
     knopki_dlya_menu[3].knopki[0] = {3*SHIRINA_KNOPKI, 200, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
     knopki_dlya_menu[4].knopki[0] = {4*SHIRINA_KNOPKI, 200, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
