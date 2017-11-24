@@ -6,7 +6,7 @@
 
 int main()
 {
-    txCreateWindow(1000,720);
+    txCreateWindow(1090,720);
 
     Mebel kartinki [8];
     kartinki[0] = {-200,200,30,NULL,30};
