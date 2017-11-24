@@ -65,7 +65,7 @@ void draw_button2(Knopka2 knop)
     txDrawText(knop.x, knop.y + VYSOTA_KNOPKI / 3, knop.x + SHIRINA_KNOPKI, knop.y + VYSOTA_KNOPKI, knop.text, DT_CENTER);
 }
 
-void btn_click (Knopka* knop, HDC* kartinka)
+void btn_click (Knopka* knop, int nomer_kartinki)
 {
     if (txMouseButtons() & 1
         && txMouseX() >= knop->x
@@ -74,7 +74,12 @@ void btn_click (Knopka* knop, HDC* kartinka)
         && txMouseY() <= knop->y + VYSOTA_KNOPKI)
     {
         knop->risovatKartinku = -knop->risovatKartinku;
-        *kartinka = knop->kartinka;
+        //meb->kartinka = knop->kartinka;
+        for (int nom_kart = nomer_kartinki; nom_kart < 100; nom_kart++)
+             {
+                pics[nom_kart].kartinka = knop->kartinka;
+            }
+//        meb->risovat = false;
         txSleep(100);
     }
 }
