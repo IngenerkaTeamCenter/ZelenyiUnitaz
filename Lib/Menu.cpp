@@ -53,7 +53,7 @@ void draw_button(Knopka knop)
     txSetFillColour(RGB( 195, 195, 195));
     txSelectFont("Times New Roman", 25);
     txRectangle(knop.x,knop.y,knop.x+SHIRINA_KNOPKI,knop.y+VYSOTA_KNOPKI);
-    txDrawText(knop.x, knop.y + 40, knop.x + SHIRINA_KNOPKI, knop.y + VYSOTA_KNOPKI, knop.text, DT_CENTER);
+    txDrawText(knop.x, knop.y + VYSOTA_KNOPKI / 3, knop.x + SHIRINA_KNOPKI, knop.y + VYSOTA_KNOPKI, knop.text, DT_CENTER);
 }
 
 void draw_button2(Knopka2 knop)
@@ -62,7 +62,7 @@ void draw_button2(Knopka2 knop)
     txSetFillColour(RGB( 195, 195, 195));
     txSelectFont("Times New Roman", 25);
     txRectangle(knop.x,knop.y,knop.x+SHIRINA_KNOPKI,knop.y+VYSOTA_KNOPKI);
-    txDrawText(knop.x, knop.y + 40, knop.x + SHIRINA_KNOPKI, knop.y + VYSOTA_KNOPKI, knop.text, DT_CENTER);
+    txDrawText(knop.x, knop.y + VYSOTA_KNOPKI / 3, knop.x + SHIRINA_KNOPKI, knop.y + VYSOTA_KNOPKI, knop.text, DT_CENTER);
 }
 
 void btn_click (Knopka* knop, HDC* kartinka)
@@ -114,14 +114,19 @@ void zapolnenie_menu()
     knopki_dlya_menu[3] = {3*SHIRINA_KNOPKI, 0, "spalnua", -1, txLoadImage ("Icons\\bad.bmp")};
     knopki_dlya_menu[4] = {4*SHIRINA_KNOPKI, 0, "spalnua", -1, txLoadImage ("Icons\\iPod_nano_6.bmp")};
 
-    knopki_dlya_menu[0].knopki[0] = {0, 100, "vanna1", -1, txLoadImage ("Icons\\chair.bmp")};
-    knopki_dlya_menu[0].knopki[1] = {0, 200, "vanna2", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[0].knopki[2] = {0, 300, "vanna3", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[0].knopki[3] = {0, 400, "vanna4", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[0].knopki[4] = {0, 500, "vanna5", -1, txLoadImage ("Icons\\tv.bmp")};
+    int x = 0;
+    int y = 0;
+    int nomer_knopki = 0;
+    knopki_dlya_menu[0].knopki[nomer_knopki++] = {x, y += VYSOTA_KNOPKI, "vanna1", -1, txLoadImage ("Icons\\chair.bmp")};
+    knopki_dlya_menu[0].knopki[nomer_knopki++] = {x, y += VYSOTA_KNOPKI, "vanna2", -1, txLoadImage ("Icons\\tv.bmp")};
+    knopki_dlya_menu[0].knopki[nomer_knopki++] = {x, y += VYSOTA_KNOPKI, "vanna3", -1, txLoadImage ("Icons\\tv.bmp")};
+    knopki_dlya_menu[0].knopki[nomer_knopki++] = {x, y += VYSOTA_KNOPKI, "vanna4", -1, txLoadImage ("Icons\\tv.bmp")};
+    knopki_dlya_menu[0].knopki[nomer_knopki++] = {x, y += VYSOTA_KNOPKI, "vanna5", -1, txLoadImage ("Icons\\tv.bmp")};
+
     knopki_dlya_menu[0].kolvo_knopok = 5;
 
-    knopki_dlya_menu[1].knopki[0] = {SHIRINA_KNOPKI,   200, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
+    y = 0;
+    knopki_dlya_menu[1].knopki[0] = {SHIRINA_KNOPKI,   y, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
     knopki_dlya_menu[1].kolvo_knopok = 1;
     knopki_dlya_menu[2].knopki[0] = {2*SHIRINA_KNOPKI, 200, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
     knopki_dlya_menu[3].knopki[0] = {3*SHIRINA_KNOPKI, 200, "vanna", -1, txLoadImage ("Icons\\tv.bmp")};
