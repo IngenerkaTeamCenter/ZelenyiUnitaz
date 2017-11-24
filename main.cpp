@@ -8,8 +8,13 @@ int main()
 {
     txCreateWindow(1090,720);
 
-    Mebel kartinki [8];
-    kartinki[0] = {-200,200,30,NULL,30};
+    int nomer_kartinki = 0;
+    Mebel pics[100];
+    int nomer = 0;
+    for (nomer = 0; nomer < 100; nomer++);
+    {
+        pics[nomer].risovat = false;
+    }
 
     zapolnenie_menu();
 
@@ -20,33 +25,40 @@ int main()
         txClear();
 
         //zapolnenie_kartinok();
-        read_file();
+        //read_file();
 
         for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
         {
             draw_button(knopki_dlya_menu[nomer_knopki]);
-            btn_click (&knopki_dlya_menu[nomer_knopki], &kartinki[0].kartinka);
+            btn_click (&knopki_dlya_menu[nomer_knopki], &pics[nomer_kartinki].kartinka);
             btn_navashdenie(&knopki_dlya_menu[nomer_knopki]);
         }
 
         if (txMouseButtons() & 1 && txMouseY() > VYSOTA_KNOPKI)
         {
-            kartinki[0].x = txMouseX();
-            kartinki[0].y = txMouseY();
-            kartinki[0].shirina = 30;
-            kartinki[0].vysota = 30;
+            pics[nomer_kartinki].x = txMouseX();
+            pics[nomer_kartinki].y = txMouseY();
+            pics[nomer_kartinki].shirina = 30;
+            pics[nomer_kartinki].vysota = 30;
+            pics[nomer_kartinki].risovat = true;
+
+            nomer_kartinki++;
+            txSleep(1000);
         }
 
-        if (kartinki[0].kartinka != NULL)
+        for (nomer = 0; nomer < nomer_kartinki; nomer++);
         {
-            txBitBlt (txDC(), kartinki[0].x, kartinki[0].y, kartinki[0].shirina, kartinki[0].vysota, kartinki[0].kartinka, 0, 0);
+            if (pics[nomer].risovat)
+            {
+                txBitBlt (txDC(), pics[nomer].x, pics[nomer].y, pics[nomer].shirina, pics[nomer].vysota, pics[nomer].kartinka, 0, 0);
+            }
         }
 
         txSleep (10);
         txEnd();
     }
 
-    for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
+    for (int nomer_knopki = 0; nomer_knopki < 100; nomer_knopki++)
     {
         txDeleteDC (knopki_dlya_menu[nomer_knopki].kartinka);
     }
