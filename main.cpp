@@ -3,6 +3,7 @@
 #include "Lib\\Files.cpp"
 #include "Lib\\Mebel.cpp"
 #include "Lib\\Menu.cpp"
+#include "Lib\\Rounding.cpp"
 
 int main()
 {
@@ -23,11 +24,22 @@ int main()
         txSetFillColor(RGB(112, 146, 190));
         txClear();
 
-        //read_file();
-
+        if(txMouseButtons() &2)
+        {
+            for (int nomer = 0; nomer < nomer_kartinki; nomer++)
+            {
+                if (pics[nomer].x >= txMouseX() - 15 and
+                    pics[nomer].x <= txMouseX() + 15 and
+                    pics[nomer].y >= txMouseY() - 15 and
+                    pics[nomer].y <= txMouseY() + 15)
+                {
+                    pics[nomer].risovat = false;
+                    pics[nomer].kartinka = NULL; 
+                }
+            }
+        }
+   
         //zapolnenie_kartinok();
-
-
         for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
         {
             draw_button(knopki_dlya_menu[nomer_knopki]);
@@ -38,8 +50,7 @@ int main()
         if (txMouseY() > VYSOTA_KNOPKI && !pics[nomer_kartinki].risovat &&
             txMouseButtons() & 1)
         {
-            pics[nomer_kartinki].x = round(txMouseX()/30) * 30;
-            pics[nomer_kartinki].y = round(txMouseY()/30) * 30;
+            roundCoords (&pics[nomer_kartinki], txMouseX(), txMouseY());
             pics[nomer_kartinki].shirina = 30;
             pics[nomer_kartinki].vysota = 30;
 
