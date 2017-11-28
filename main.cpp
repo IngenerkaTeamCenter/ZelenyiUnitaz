@@ -3,6 +3,7 @@
 #include "Lib\\Files.cpp"
 #include "Lib\\Mebel.cpp"
 #include "Lib\\Menu.cpp"
+#include "Lib\\Rounding.cpp"
 
 int main()
 {
@@ -36,8 +37,7 @@ int main()
 
         if (txMouseButtons() &1 && txMouseY() > VYSOTA_KNOPKI)
         {
-            pics[nomer_kartinki].x = txMouseX();
-            pics[nomer_kartinki].y = txMouseY();
+            roundCoords (&pics[nomer_kartinki], txMouseX(), txMouseY());
             pics[nomer_kartinki].shirina = 30;
             pics[nomer_kartinki].vysota = 30;
             pics[nomer_kartinki].risovat = true;
