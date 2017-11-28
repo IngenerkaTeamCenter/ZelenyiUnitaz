@@ -16,13 +16,14 @@ int main()
     }
 
     zapolnenie_menu();
-    //read_file();
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
         txSetFillColor(RGB(112, 146, 190));
         txClear();
+
+        //read_file();
 
         //zapolnenie_kartinok();
 
@@ -34,13 +35,28 @@ int main()
             btn_navashdenie(&knopki_dlya_menu[nomer_knopki]);
         }
 
-        if (txMouseButtons() &1 && txMouseY() > VYSOTA_KNOPKI)
+        if (txMouseY() > VYSOTA_KNOPKI && !pics[nomer_kartinki].risovat &&
+            txMouseButtons() & 1)
         {
-            pics[nomer_kartinki].x = txMouseX();
-            pics[nomer_kartinki].y = txMouseY();
+            pics[nomer_kartinki].x = round(txMouseX()/30) * 30;
+            pics[nomer_kartinki].y = round(txMouseY()/30) * 30;
             pics[nomer_kartinki].shirina = 30;
             pics[nomer_kartinki].vysota = 30;
-            pics[nomer_kartinki].risovat = true;
+
+            bool many = false;
+
+            for (int p = 0; p < nomer_kartinki; p++)
+            {
+                if ((pics[nomer_kartinki].x == pics[p].x && pics[nomer_kartinki].y == pics[p].y))
+                {
+                    many = true;
+                }
+            }
+
+            if (!many)
+            {
+                pics [nomer_kartinki].risovat = true;
+            }
         }
 
         for (nomer = 0; nomer < 100; nomer++)
@@ -56,6 +72,8 @@ int main()
         txSleep (10);
         txEnd();
     }
+
+    saveMassive(pics, nomer_kartinki);
 
     for (int nomer_knopki = 0; nomer_knopki < 100; nomer_knopki++)
     {
