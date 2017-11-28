@@ -24,6 +24,25 @@ int main()
         txSetFillColor(RGB(112, 146, 190));
         txClear();
 
+
+
+     if(txMouseButtons() &2)
+     {
+       for (int nomer = 0; nomer < nomer_kartinki; nomer++)
+     {
+       if (pics[nomer].x >= txMouseX() - 15 and
+           pics[nomer].x <= txMouseX() + 15 and
+           pics[nomer].y >= txMouseY() - 15 and
+           pics[nomer].y <= txMouseY() + 15)
+     {
+           pics[nomer].risovat = false;
+           pics[nomer].kartinka = NULL;
+
+         }
+
+      }
+
+   }
         //zapolnenie_kartinok();
 
 
@@ -64,3 +83,4 @@ int main()
 
     return 0;
 }
+
