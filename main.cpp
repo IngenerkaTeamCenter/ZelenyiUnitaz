@@ -17,7 +17,6 @@ int main()
     }
 
     zapolnenie_menu();
-    //read_file();
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -25,28 +24,22 @@ int main()
         txSetFillColor(RGB(112, 146, 190));
         txClear();
 
-
-
-     if(txMouseButtons() &2)
-     {
-       for (int nomer = 0; nomer < nomer_kartinki; nomer++)
-     {
-       if (pics[nomer].x >= txMouseX() - 15 and
-           pics[nomer].x <= txMouseX() + 15 and
-           pics[nomer].y >= txMouseY() - 15 and
-           pics[nomer].y <= txMouseY() + 15)
-     {
-           pics[nomer].risovat = false;
-           pics[nomer].kartinka = NULL;
-
-         }
-
-      }
-
-   }
+        if(txMouseButtons() &2)
+        {
+            for (int nomer = 0; nomer < nomer_kartinki; nomer++)
+            {
+                if (pics[nomer].x >= txMouseX() - 15 and
+                    pics[nomer].x <= txMouseX() + 15 and
+                    pics[nomer].y >= txMouseY() - 15 and
+                    pics[nomer].y <= txMouseY() + 15)
+                {
+                    pics[nomer].risovat = false;
+                    pics[nomer].kartinka = NULL; 
+                }
+            }
+        }
+   
         //zapolnenie_kartinok();
-
-
         for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
         {
             draw_button(knopki_dlya_menu[nomer_knopki]);
@@ -54,12 +47,27 @@ int main()
             btn_navashdenie(&knopki_dlya_menu[nomer_knopki]);
         }
 
-        if (txMouseButtons() &1 && txMouseY() > VYSOTA_KNOPKI)
+        if (txMouseY() > VYSOTA_KNOPKI && !pics[nomer_kartinki].risovat &&
+            txMouseButtons() & 1)
         {
             roundCoords (&pics[nomer_kartinki], txMouseX(), txMouseY());
             pics[nomer_kartinki].shirina = 30;
             pics[nomer_kartinki].vysota = 30;
-            pics[nomer_kartinki].risovat = true;
+
+            bool many = false;
+
+            for (int p = 0; p < nomer_kartinki; p++)
+            {
+                if ((pics[nomer_kartinki].x == pics[p].x && pics[nomer_kartinki].y == pics[p].y))
+                {
+                    many = true;
+                }
+            }
+
+            if (!many)
+            {
+                pics [nomer_kartinki].risovat = true;
+            }
         }
 
         for (nomer = 0; nomer < 100; nomer++)
@@ -76,6 +84,8 @@ int main()
         txEnd();
     }
 
+    saveMassive(pics, nomer_kartinki);
+
     for (int nomer_knopki = 0; nomer_knopki < 100; nomer_knopki++)
     {
         txDeleteDC (knopki_dlya_menu[nomer_knopki].kartinka);
@@ -83,4 +93,3 @@ int main()
 
     return 0;
 }
-
