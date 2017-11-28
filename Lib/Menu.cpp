@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Const.cpp"
 #include "Mebel.cpp"
 

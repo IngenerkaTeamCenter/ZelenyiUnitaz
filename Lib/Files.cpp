@@ -1,6 +1,7 @@
 #pragma once
 
 #include "TXLib.h"
+#include "menu.cpp"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -28,13 +29,29 @@ void read_file()
         string y = stroka_s_kartinkoi.substr(0, pos_y);
 
         HDC pic = txLoadImage(adress.c_str());
-	HBITMAP hbm=(HBITMAP)Win32::GetCurrentObject(pic, OBJ_BITMAP);
-	BITMAP bm;
-	Win32::GetObject(hbm,sizeof(bm), (LPVOID)&bm);
+        HBITMAP hbm=(HBITMAP)Win32::GetCurrentObject(pic, OBJ_BITMAP);
+        BITMAP bm;
+        Win32::GetObject(hbm,sizeof(bm), (LPVOID)&bm);
 
         txBitBlt (txDC(), atoi(x.c_str()), atoi(y.c_str()), bm.bmWidth, bm.bmHeight, pic, 0, 0);
         txDeleteDC(pic);
     }
 
     map_file.close();
+}
+
+void saveMassive(Mebel* KART1, int nomer_kartinki)
+{
+    ofstream fout_save;
+    fout_save.open("Files\\savefile.txt");
+
+    for(int i = 0; i< nomer_kartinki; i++)
+    {
+        if (KART1[i].risovat)
+        {
+            fout_save << /*KART1[i].adress << "," <<*/ KART1[i].x << "," << KART1[i].y << endl;
+        }
+    }
+
+    fout_save.close();
 }
