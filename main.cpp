@@ -24,21 +24,24 @@ int main()
         txSetFillColor(RGB(112, 146, 190));
         txClear();
 
+        read_file();
+
+        //Sterka
         if(txMouseButtons() &2)
         {
             for (int nomer = 0; nomer < nomer_kartinki; nomer++)
             {
                 if (pics[nomer].x >= txMouseX() - 15 and
-                    pics[nomer].x <= txMouseX() + 15 and
+                    pics[nomer].x <= txMouseX() + pics[nomer].shirina - 15 and
                     pics[nomer].y >= txMouseY() - 15 and
-                    pics[nomer].y <= txMouseY() + 15)
+                    pics[nomer].y <= txMouseY() + pics[nomer].vysota - 15)
                 {
                     pics[nomer].risovat = false;
-                    pics[nomer].kartinka = NULL; 
+                    pics[nomer].kartinka = NULL;
                 }
             }
         }
-   
+
         //zapolnenie_kartinok();
         for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
         {
@@ -50,15 +53,19 @@ int main()
         if (txMouseY() > VYSOTA_KNOPKI && !pics[nomer_kartinki].risovat &&
             txMouseButtons() & 1)
         {
-            roundCoords (&pics[nomer_kartinki], txMouseX(), txMouseY());
-            pics[nomer_kartinki].shirina = 30;
-            pics[nomer_kartinki].vysota = 30;
+            HBITMAP hbm=(HBITMAP)Win32::GetCurrentObject(pics[nomer].kartinka, OBJ_BITMAP);
+            BITMAP bm;
+            Win32::GetObject(hbm,sizeof(bm), (LPVOID)&bm);
+
+            pics[nomer_kartinki].shirina = bm.bmWidth;
+            pics[nomer_kartinki].vysota = bm.bmHeight;
 
             bool many = false;
 
             for (int p = 0; p < nomer_kartinki; p++)
             {
-                if ((pics[nomer_kartinki].x == pics[p].x && pics[nomer_kartinki].y == pics[p].y))
+                if (pics[nomer_kartinki].x == pics[p].x &&
+                     abs(pics[nomer_kartinki].y - pics[p].y) < pics[p].vysota)
                 {
                     many = true;
                 }
@@ -68,6 +75,8 @@ int main()
             {
                 pics [nomer_kartinki].risovat = true;
             }
+
+            roundCoords (&pics[nomer_kartinki], txMouseX(), txMouseY());
         }
 
         for (nomer = 0; nomer < 100; nomer++)

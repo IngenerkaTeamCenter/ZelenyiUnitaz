@@ -1,4 +1,4 @@
-Icons\\tv.bmp, 200, 200
+Icons\\bad.bmp, 200, 200
 Icons\\tv.bmp, 200, 400
 Icons\\tv.bmp, 400, 200
 Icons\\tv.bmp, 300, 200
