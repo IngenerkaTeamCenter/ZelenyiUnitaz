@@ -14,9 +14,11 @@ int main()
     for (nomer = 0; nomer < 100; nomer++);
     {
         pics[nomer].risovat = false;
+        pics[nomer].kartinka = NULL;
     }
 
     zapolnenie_menu();
+        read_file();
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -24,7 +26,6 @@ int main()
         txSetFillColor(RGB(112, 146, 190));
         txClear();
 
-        read_file();
 
         //Sterka
         if(txMouseButtons() &2)
@@ -51,7 +52,7 @@ int main()
         }
 
         if (txMouseY() > VYSOTA_KNOPKI && !pics[nomer_kartinki].risovat &&
-            txMouseButtons() & 1)
+            txMouseButtons() & 1 && pics[nomer_kartinki].kartinka != NULL)
         {
             HBITMAP hbm=(HBITMAP)Win32::GetCurrentObject(pics[nomer].kartinka, OBJ_BITMAP);
             BITMAP bm;
@@ -102,3 +103,5 @@ int main()
 
     return 0;
 }
+
+
