@@ -14,17 +14,17 @@ int main()
     for (nomer = 0; nomer < COL_VO_KART; nomer++);
     {
         pics[nomer].risovat = false;
+        pics[nomer].kartinka = NULL;
     }
 
-    zapolnenie_menu();
+    //zapolnenie_menu();
+    read_file();
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
         txSetFillColor(RGB(112, 146, 190));
         txClear();
-
-        read_file();
 
         //Sterka
         if(txMouseButtons() &2)
@@ -51,7 +51,7 @@ int main()
         }
 
         if (txMouseY() > VYSOTA_KNOPKI && !pics[nomer_kartinki].risovat &&
-            txMouseButtons() & 1)
+            txMouseButtons() & 1 && pics[nomer_kartinki].kartinka != NULL)
         {
             HBITMAP hbm=(HBITMAP)Win32::GetCurrentObject(pics[nomer].kartinka, OBJ_BITMAP);
             BITMAP bm;
@@ -85,7 +85,6 @@ int main()
             {
                 txBitBlt (txDC(), pics[nomer].x, pics[nomer].y, pics[nomer].shirina, pics[nomer].vysota, pics[nomer].kartinka, 0, 0);
                 nomer_kartinki = nomer + 1;
-                //txSleep(100);
             }
         }
 
@@ -93,6 +92,7 @@ int main()
         txEnd();
     }
 
+    //Save to file
     saveMassive(pics, nomer_kartinki);
 
     for (int nomer_knopki = 0; nomer_knopki < COL_VO_KART; nomer_knopki++)
