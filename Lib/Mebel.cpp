@@ -8,7 +8,4 @@ struct Mebel {
     int shirina;
     HDC kartinka;
     int vysota;
-    bool risovat;
 };
-
-Mebel pics[100];
