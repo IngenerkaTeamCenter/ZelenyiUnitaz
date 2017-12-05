@@ -11,7 +11,7 @@ int main()
 
     int nomer_kartinki = 0;
     int nomer = 0;
-    for (nomer = 0; nomer < 100; nomer++);
+    for (nomer = 0; nomer < COL_VO_KART; nomer++);
     {
         pics[nomer].risovat = false;
     }
@@ -79,7 +79,7 @@ int main()
             roundCoords (&pics[nomer_kartinki], txMouseX(), txMouseY());
         }
 
-        for (nomer = 0; nomer < 100; nomer++)
+        for (nomer = 0; nomer < COL_VO_KART; nomer++)
         {
             if (pics[nomer].risovat == true)
             {
@@ -95,7 +95,7 @@ int main()
 
     saveMassive(pics, nomer_kartinki);
 
-    for (int nomer_knopki = 0; nomer_knopki < 100; nomer_knopki++)
+    for (int nomer_knopki = 0; nomer_knopki < COL_VO_KART; nomer_knopki++)
     {
         txDeleteDC (knopki_dlya_menu[nomer_knopki].kartinka);
     }

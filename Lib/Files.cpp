@@ -54,6 +54,8 @@ void saveMassive(Mebel* KART1, int nomer_kartinki)
         {
             fout_save << /*KART1[i].adress << "," <<*/ KART1[i].x << "," << KART1[i].y << endl;
         }
+
+
     }
 
     fout_save.close();
