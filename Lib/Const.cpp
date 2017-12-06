@@ -8,4 +8,4 @@ const int SHIRINA_KNOPKI = 200;
 const int VYSOTA_KNOPKI = 50;
 const int VYSOTA_MENU = 550;
 const int ZERO = 0;
-const int COL_VO_KART = 100;
+const int COL_VO_KART = 1000;

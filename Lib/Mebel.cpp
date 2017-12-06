@@ -11,4 +11,4 @@ struct Mebel {
     bool risovat;
 };
 
-Mebel pics[100];
+Mebel pics[COL_VO_KART];
