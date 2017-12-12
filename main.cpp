@@ -20,6 +20,7 @@ int main()
     zapolnenie_menu();
     //read_file();
 
+
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
@@ -60,6 +61,8 @@ int main()
             pics[nomer_kartinki].shirina = bm.bmWidth;
             pics[nomer_kartinki].vysota = bm.bmHeight;
 
+
+
             bool many = false;
 
             for (int p = 0; p < nomer_kartinki; p++)
@@ -69,7 +72,19 @@ int main()
                 {
                     many = true;
                 }
+                if ((pics[nomer_kartinki].znak == "t" &&
+                        pics[p].znak == "t"))
+                {
+                    many = true;
+                }
+
+                if ((pics[nomer_kartinki].znak == "s" &&
+                        pics[p].znak == "s"))
+                {
+                    many = true;
+                }
             }
+
 
             if (!many)
             {
