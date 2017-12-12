@@ -21,6 +21,7 @@ int main()
     zapolnenie_menu();
     //read_file();
 
+
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
@@ -62,6 +63,8 @@ int main()
             pics[nomer_kartinki].vysota = bm.bmHeight;
             roundCoords (&pics[nomer_kartinki], txMouseX(), txMouseY());
 
+
+
             bool many = false;
 
             //My pishem 1, shtoby (30, 60) i (60, 90) schitalis neperesecajushimisya
@@ -75,7 +78,19 @@ int main()
                 {
                     many = true;
                 }
+                if ((pics[nomer_kartinki].znak == "t" &&
+                        pics[p].znak == "t"))
+                {
+                    many = true;
+                }
+
+                if ((pics[nomer_kartinki].znak == "s" &&
+                        pics[p].znak == "s"))
+                {
+                    many = true;
+                }
             }
+
 
             if (!many)
             {
