@@ -4,7 +4,8 @@
 #include "Lib\\Mebel.cpp"
 #include "Lib\\Menu.cpp"
 #include "Lib\\Rounding.cpp"
-
+#include "Lib\\Rastoianie.cpp"
+#include "Lib\\Debug.cpp"
 int main()
 {
     txCreateWindow(1090,720);
@@ -59,13 +60,18 @@ int main()
 
             pics[nomer_kartinki].shirina = bm.bmWidth;
             pics[nomer_kartinki].vysota = bm.bmHeight;
+            roundCoords (&pics[nomer_kartinki], txMouseX(), txMouseY());
 
             bool many = false;
 
-            for (int p = 0; p < nomer_kartinki; p++)
+            //My pishem 1, shtoby (30, 60) i (60, 90) schitalis neperesecajushimisya
+            for (int predydushii_nomer = 0; predydushii_nomer < nomer_kartinki; predydushii_nomer++)
             {
-                if (pics[nomer_kartinki].x == pics[p].x &&
-                     abs(pics[nomer_kartinki].y - pics[p].y) < pics[p].vysota)
+                if (oneDimensionalDistance(pics[nomer_kartinki].x + 1,    pics[nomer_kartinki].x    + pics[nomer_kartinki].shirina,
+                                           pics[predydushii_nomer].x + 1, pics[predydushii_nomer].x + pics[predydushii_nomer].shirina) == 0
+                    and
+                    oneDimensionalDistance(pics[nomer_kartinki].y + 1,    pics[nomer_kartinki].y    + pics[nomer_kartinki].vysota,
+                                           pics[predydushii_nomer].y + 1, pics[predydushii_nomer].y + pics[predydushii_nomer].vysota) == 0)
                 {
                     many = true;
                 }
@@ -75,8 +81,6 @@ int main()
             {
                 pics [nomer_kartinki].risovat = true;
             }
-
-            roundCoords (&pics[nomer_kartinki], txMouseX(), txMouseY());
         }
 
         for (nomer = 0; nomer < COL_VO_KART; nomer++)
