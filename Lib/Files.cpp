@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void read_file()
+void read_map_file()
 {
     ifstream map_file;
     string stroka_s_kartinkoi;
@@ -43,7 +43,7 @@ void read_file()
     map_file.close();
 }
 
-void saveMassive(Mebel* KART1, int nomer_kartinki)
+void save_map_assive(Mebel* KART1, int nomer_kartinki)
 {
     ofstream fout_save;
     fout_save.open("Files\\savefile.txt");
