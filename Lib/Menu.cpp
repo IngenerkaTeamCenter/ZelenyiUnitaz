@@ -30,25 +30,16 @@ Knopka2 vtor_knop[KOLVO_KNOPOK];
 
 void zapolnenie_kartinok()
 {
-    HDC  TV = txLoadImage ("Icons\\tv.bmp");
 
-    Mebel kartinci [8];
-    kartinci[0] = {200, 200, 30, TV, "t", 30};
-    kartinci[1] = {200, 400, 30, TV, "t", 30};
-    kartinci[2] = {400, 200, 30, TV, "t", 30};
-    kartinci[3] = {300, 200, 30, TV, "t", 30};
-    kartinci[4] = {200, 300, 30, TV, "t", 30};
-    kartinci[5] = {300, 300, 30, TV, "t", 30};
-    kartinci[6] = {600, 200, 30, TV, "t", 30};
 
     for (int nomer = 0; nomer < 7; nomer++)
     {
-        txBitBlt(txDC(), kartinci[nomer].x, kartinci[nomer].y,
-            kartinci[nomer].shirina, kartinci[nomer].vysota,
-            kartinci[nomer].kartinka, 0, 0);
+        txBitBlt(txDC(), pics[nomer].x, pics[nomer].y,
+            pics[nomer].shirina, pics[nomer].vysota,
+            pics[nomer].kartinka, 0, 0);
     }
 
-    txDeleteDC (TV);
+
 }
 
 void draw_button(Knopka knop)
@@ -118,15 +109,15 @@ void btn_navashdenie (Knopka* knop)
 
 void zapolnenie_menu()
 {
-    knopki_dlya_menu[0] = {0, 0, "tv", -1, txLoadImage ("Icons\\tv.bmp"), "t"};
-    knopki_dlya_menu[1] = {SHIRINA_KNOPKI, 0, "PC", -1, txLoadImage ("Icons\\technology\\PC_7.bmp"), "p"};
-    knopki_dlya_menu[2] = {2*SHIRINA_KNOPKI, 0, "table", -1, txLoadImage ("Icons\\table.bmp"), "e"};
-    knopki_dlya_menu[3] = {3*SHIRINA_KNOPKI, 0, "bad", -1, txLoadImage ("Icons\\bad.bmp"), "b"};
-    knopki_dlya_menu[4] = {4*SHIRINA_KNOPKI, 0, "iPad", -1, txLoadImage ("Icons\\technology\\iPad.bmp"), "i"};
-    knopki_dlya_menu[5] = {5*SHIRINA_KNOPKI, 0, "Duxovka", -1, txLoadImage ("Icons\\duxovka.bmp"), "d"};
-    knopki_dlya_menu[6] = {6*SHIRINA_KNOPKI, 0, "Schaf", -1, txLoadImage ("Icons\\schaf.bmp"), "s"};
-    knopki_dlya_menu[7] = {7*SHIRINA_KNOPKI, 0, "Bath", -1, txLoadImage ("Icons\\bath.bmp"), "q"};
-    knopki_dlya_menu[8] = {8*SHIRINA_KNOPKI, 0, "Divan", -1, txLoadImage ("Icons\\divan.bmp"), "w"};
+    knopki_dlya_menu[0] = {0, 0, "bad", -1, txLoadImage ("Icons\\bad.bmp"), "b"};
+    knopki_dlya_menu[1] = {SHIRINA_KNOPKI, 0, "batch", -1, txLoadImage ("Icons\\bath.bmp"), "q"};
+    knopki_dlya_menu[2] = {2*SHIRINA_KNOPKI, 0, "chair", -1, txLoadImage ("Icons\\chair.bmp"), "c"};
+    knopki_dlya_menu[3] = {3*SHIRINA_KNOPKI, 0, "sofa", -1, txLoadImage ("Icons\\divan.bmp"), "b"};
+    knopki_dlya_menu[4] = {4*SHIRINA_KNOPKI, 0, "oven", -1, txLoadImage ("Icons\\duxovka.bmp"), "i"};
+    knopki_dlya_menu[5] = {5*SHIRINA_KNOPKI, 0, "cupboard", -1, txLoadImage ("Icons\\schaf.bmp"), "d"};
+    knopki_dlya_menu[6] = {6*SHIRINA_KNOPKI, 0, "table", -1, txLoadImage ("Icons\\table.bmp"), "s"};
+    knopki_dlya_menu[7] = {7*SHIRINA_KNOPKI, 0, "TV", -1, txLoadImage ("Icons\\tv.bmp"), "q"};
+    knopki_dlya_menu[8] = {8*SHIRINA_KNOPKI, 0, "iPad", -1, txLoadImage ("Icons\\technology\\iPad.bmp"), "w"};
     knopki_dlya_menu[9] = {9*SHIRINA_KNOPKI, 0, "iPhone_x", -1, txLoadImage ("Icons\\technology\\iPhone_x.bmp"), "x"};
 
 

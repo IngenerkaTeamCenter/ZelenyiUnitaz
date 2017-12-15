@@ -19,7 +19,7 @@ int main()
     }
 
     zapolnenie_menu();
-    //read_file();
+    //read_map_file();
 
 
     while (!GetAsyncKeyState(VK_ESCAPE))
@@ -78,17 +78,17 @@ int main()
                 {
                     many = true;
                 }
-                if ((pics[nomer_kartinki].znak == "t" &&
-                        pics[p].znak == "t"))
+               /* if ((pics[nomer_kartinki].znak == "t" &&
+                        pics[predydushii_nomer].znak == "t"))
                 {
                     many = true;
                 }
 
                 if ((pics[nomer_kartinki].znak == "s" &&
-                        pics[p].znak == "s"))
+                        pics[predydushii_nomer].znak == "s"))
                 {
                     many = true;
-                }
+                }*/
             }
 
 
@@ -107,12 +107,12 @@ int main()
             }
         }
 
+        //debug_function(100, 100, nomer_kartinki);
         txSleep (10);
         txEnd();
     }
-
     //Save to file
-    saveMassive(pics, nomer_kartinki);
+    save_map_assive(pics, nomer_kartinki);
 
     for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
     {
