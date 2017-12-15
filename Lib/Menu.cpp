@@ -30,25 +30,16 @@ Knopka2 vtor_knop[KOLVO_KNOPOK];
 
 void zapolnenie_kartinok()
 {
-    HDC  TV = txLoadImage ("Icons\\tv.bmp");
 
-    Mebel kartinci [8];
-    kartinci[0] = {200, 200, 30, TV, "t", 30};
-    kartinci[1] = {200, 400, 30, TV, "t", 30};
-    kartinci[2] = {400, 200, 30, TV, "t", 30};
-    kartinci[3] = {300, 200, 30, TV, "t", 30};
-    kartinci[4] = {200, 300, 30, TV, "t", 30};
-    kartinci[5] = {300, 300, 30, TV, "t", 30};
-    kartinci[6] = {600, 200, 30, TV, "t", 30};
 
     for (int nomer = 0; nomer < 7; nomer++)
     {
-        txBitBlt(txDC(), kartinci[nomer].x, kartinci[nomer].y,
-            kartinci[nomer].shirina, kartinci[nomer].vysota,
-            kartinci[nomer].kartinka, 0, 0);
+        txBitBlt(txDC(), pics[nomer].x, pics[nomer].y,
+            pics[nomer].shirina, pics[nomer].vysota,
+            pics[nomer].kartinka, 0, 0);
     }
 
-    txDeleteDC (TV);
+
 }
 
 void draw_button(Knopka knop)
