@@ -38,8 +38,9 @@ int read_map_file(Mebel* KART1)
             Win32::GetObject(hbm,sizeof(bm), (LPVOID)&bm);
 
             txBitBlt (txDC(), atoi(x.c_str()), atoi(y.c_str()), bm.bmWidth, bm.bmHeight, pic, 0, 0);
-            KART1[nomer] = {atoi(x.c_str()), atoi(y.c_str()), bm.bmWidth, pic, bm.bmHeight, true, adress.c_str()};
+            KART1[nomer] = {atoi(x.c_str()), atoi(y.c_str()), bm.bmWidth, pic, "1", bm.bmHeight, true, adress.c_str()};
 
+            //txDeleteDC(pic);
             nomer++;
         }
     }
