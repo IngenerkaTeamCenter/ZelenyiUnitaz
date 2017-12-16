@@ -10,6 +10,8 @@ int main()
 {
     txCreateWindow(1090,720);
 
+    bool soobshenie_uzhe_pokazyvali = false;
+
     int nomer_kartinki = 0;
     int nomer = 0;
     for (nomer = 0; nomer < COL_VO_KART; nomer++);
@@ -52,6 +54,7 @@ int main()
             btn_navashdenie(&knopki_dlya_menu[nomer_knopki]);
         }
 
+        int nomer_tv = 0;
         if (txMouseY() > VYSOTA_KNOPKI && nomer_kartinki < COL_VO_KART && !pics[nomer_kartinki].risovat &&
             txMouseButtons() &1 && pics[nomer_kartinki].kartinka != NULL)
         {
@@ -66,7 +69,6 @@ int main()
 
 
             bool many = false;
-
             //My pishem 1, shtoby (30, 60) i (60, 90) schitalis neperesecajushimisya
             for (int predydushii_nomer = 0; predydushii_nomer < nomer_kartinki; predydushii_nomer++)
             {
@@ -79,18 +81,17 @@ int main()
                     many = true;
                 }
                 if ((pics[nomer_kartinki].znak == "t" &&
-                        pics[p].znak == "t"))
+                         pics[predydushii_nomer].znak == "t"))
                 {
-                    many = true;
+                    nomer_tv = nomer_tv  + 1;
                 }
 
                 if ((pics[nomer_kartinki].znak == "s" &&
-                        pics[p].znak == "s"))
+                        pics[predydushii_nomer].znak == "s"))
                 {
                     many = true;
                 }
             }
-
 
             if (!many)
             {
@@ -105,6 +106,16 @@ int main()
                 txBitBlt (txDC(), pics[nomer].x, pics[nomer].y, pics[nomer].shirina, pics[nomer].vysota, pics[nomer].kartinka, 0, 0);
                 nomer_kartinki = nomer + 1;
             }
+        }
+
+        if (nomer_tv > 5 && !soobshenie_uzhe_pokazyvali)
+        {
+            if (txMessageBox ("Это магазин техники?:)", "Предупреждение", MB_YESNO) == IDNO)
+            {
+                break;
+            }
+
+            soobshenie_uzhe_pokazyvali = true;
         }
 
         txSleep (10);
