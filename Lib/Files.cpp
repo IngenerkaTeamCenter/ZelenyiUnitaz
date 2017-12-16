@@ -2,21 +2,24 @@
 
 #include "TXLib.h"
 #include "menu.cpp"
+#include "Mebel.cpp"
 #include <iostream>
 #include <fstream>
 #include <string>
 
 using namespace std;
 
-void read_file()
+int read_file(Mebel* KART1)
 {
     ifstream map_file;
-    string stroka_s_kartinkoi;
-    map_file.open("Files\\Map.txt");
+    string stroka_s_kartinkoi = "1";
+    map_file.open("Files\\map.txt");
+    int nomer = 0;
 
-    while (map_file.good()) {
+    while (map_file.good() && strlen(stroka_s_kartinkoi.c_str()) > 0) {
 
         getline (map_file, stroka_s_kartinkoi);
+
         if (strlen(stroka_s_kartinkoi.c_str()) > 0)
         {
             int pos_adresa = stroka_s_kartinkoi.find(',');
@@ -27,8 +30,7 @@ void read_file()
             string x = stroka_s_kartinkoi.substr(0, pos_x);
 
             stroka_s_kartinkoi = stroka_s_kartinkoi.substr(pos_x + 2);
-            int pos_y = stroka_s_kartinkoi.find(',');
-            string y = stroka_s_kartinkoi.substr(0, pos_y);
+            string y = stroka_s_kartinkoi;
 
             HDC pic = txLoadImage(adress.c_str());
             HBITMAP hbm=(HBITMAP)Win32::GetCurrentObject(pic, OBJ_BITMAP);
@@ -36,11 +38,15 @@ void read_file()
             Win32::GetObject(hbm,sizeof(bm), (LPVOID)&bm);
 
             txBitBlt (txDC(), atoi(x.c_str()), atoi(y.c_str()), bm.bmWidth, bm.bmHeight, pic, 0, 0);
-            txDeleteDC(pic);
+            KART1[nomer] = {atoi(x.c_str()), atoi(y.c_str()), bm.bmWidth, pic, bm.bmHeight, true, adress.c_str()};
+
+            nomer++;
         }
     }
 
     map_file.close();
+
+    return nomer;
 }
 
 void saveMassive(Mebel* KART1, int nomer_kartinki)
@@ -48,15 +54,12 @@ void saveMassive(Mebel* KART1, int nomer_kartinki)
     ofstream fout_save;
     fout_save.open("Files\\savefile.txt");
 
-    for(int i = 0; i< nomer_kartinki; i++)
+    for (int i = 0; i< nomer_kartinki; i++)
     {
         if (KART1[i].risovat)
         {
             fout_save << /*KART1[i].adress << "," <<*/ KART1[i].x << "," << KART1[i].y << endl;
         }
-
-
     }
-
     fout_save.close();
 }

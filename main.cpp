@@ -6,13 +6,13 @@
 #include "Lib\\Rounding.cpp"
 #include "Lib\\Rastoianie.cpp"
 #include "Lib\\Debug.cpp"
+
 int main()
 {
     txCreateWindow(1090,720);
 
     bool soobshenie_uzhe_pokazyvali = false;
 
-    int nomer_kartinki = 0;
     int nomer = 0;
     for (nomer = 0; nomer < COL_VO_KART; nomer++);
     {
@@ -20,9 +20,7 @@ int main()
         pics[nomer].kartinka = NULL;
     }
 
-    zapolnenie_menu();
-    //read_file();
-
+    int nomer_kartinki = read_file(pics);
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -66,8 +64,6 @@ int main()
             pics[nomer_kartinki].vysota = bm.bmHeight;
             roundCoords (&pics[nomer_kartinki], txMouseX(), txMouseY());
 
-
-
             bool many = false;
             //My pishem 1, shtoby (30, 60) i (60, 90) schitalis neperesecajushimisya
             for (int predydushii_nomer = 0; predydushii_nomer < nomer_kartinki; predydushii_nomer++)
@@ -80,14 +76,14 @@ int main()
                 {
                     many = true;
                 }
-                if ((pics[nomer_kartinki].znak == "t" &&
-                         pics[predydushii_nomer].znak == "t"))
+
+		//Counting TVs
+                if ((pics[nomer_kartinki].znak == "t" && pics[predydushii_nomer].znak == "t"))
                 {
                     nomer_tv = nomer_tv  + 1;
                 }
 
-                if ((pics[nomer_kartinki].znak == "s" &&
-                        pics[predydushii_nomer].znak == "s"))
+                if ((pics[nomer_kartinki].znak == "s" && pics[predydushii_nomer].znak == "s"))
                 {
                     many = true;
                 }
@@ -95,8 +91,9 @@ int main()
 
             if (!many)
             {
-                pics [nomer_kartinki].risovat = true;
+                pics[nomer_kartinki].risovat = true;
             }
+
         }
 
         for (nomer = 0; nomer < COL_VO_KART; nomer++)
