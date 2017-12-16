@@ -20,7 +20,7 @@ int main()
         pics[nomer].kartinka = NULL;
     }
 
-    int nomer_kartinki = read_file(pics);
+    int nomer_kartinki = read_map_file(pics);
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -120,7 +120,7 @@ int main()
     }
 
     //Save to file
-    saveMassive(pics, nomer_kartinki);
+    save_map_massive(pics, nomer_kartinki);
 
     for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
     {
