@@ -20,6 +20,7 @@ int main()
         pics[nomer].kartinka = NULL;
     }
 
+    zapolnenie_menu();
     int nomer_kartinki = read_map_file(pics);
 
     while (!GetAsyncKeyState(VK_ESCAPE))
