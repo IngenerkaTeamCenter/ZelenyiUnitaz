@@ -20,6 +20,7 @@ int main()
         pics[nomer].kartinka = NULL;
     }
 
+    zapolnenie_menu();
     int nomer_kartinki = read_map_file(pics);
 
     while (!GetAsyncKeyState(VK_ESCAPE))
@@ -44,7 +45,6 @@ int main()
             }
         }
 
-        //zapolnenie_kartinok();
         for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
         {
             draw_button(knopki_dlya_menu[nomer_knopki]);
@@ -66,6 +66,11 @@ int main()
 
             bool many = false;
             //My pishem 1, shtoby (30, 60) i (60, 90) schitalis neperesecajushimisya
+            if (pics[nomer_kartinki].znak == "t")
+            {
+                nomer_tv = nomer_tv  + 1;
+            }
+
             for (int predydushii_nomer = 0; predydushii_nomer < nomer_kartinki; predydushii_nomer++)
             {
                 if (oneDimensionalDistance(pics[nomer_kartinki].x + 1,    pics[nomer_kartinki].x    + pics[nomer_kartinki].shirina,
@@ -78,7 +83,7 @@ int main()
                 }
 
 		//Counting TVs
-                if ((pics[nomer_kartinki].znak == "t" && pics[predydushii_nomer].znak == "t"))
+                if (pics[predydushii_nomer].znak == "t")
                 {
                     nomer_tv = nomer_tv  + 1;
                 }
