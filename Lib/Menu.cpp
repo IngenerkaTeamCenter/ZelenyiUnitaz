@@ -61,7 +61,6 @@ void btn_click (Knopka* knop, int nomer_kartinki)
             pics[nom_kart].znak = knop->znak;
         }
 
-        txSleep(100);
     }
 }
 
@@ -109,23 +108,11 @@ void zapolnenie_menu()
     int y = 0;
     int nomer_knopki = 0;
 
-    knopki_dlya_menu[0].knopki[nomer_knopki++] = {x, y += VYSOTA_KNOPKI, "chair", -1, txLoadImage ("Icons\\chair.bmp")};
-    knopki_dlya_menu[0].knopki[nomer_knopki++] = {x, y += VYSOTA_KNOPKI, "tv", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[0].knopki[nomer_knopki++] = {x, y += VYSOTA_KNOPKI, "tv", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[0].knopki[nomer_knopki++] = {x, y += VYSOTA_KNOPKI, "tv", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[0].knopki[nomer_knopki++] = {x, y += VYSOTA_KNOPKI, "tv", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[0].kolvo_knopok = 5;
+
 
     y = 0;
     x += SHIRINA_KNOPKI;
     nomer_knopki = 0;
 
-    knopki_dlya_menu[1].knopki[nomer_knopki++] = {x, y += VYSOTA_KNOPKI, "tv", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[1].kolvo_knopok = 1;
-    knopki_dlya_menu[2].knopki[0] = {2*SHIRINA_KNOPKI, 200, "tv", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[2].kolvo_knopok = 0;
-    knopki_dlya_menu[3].knopki[0] = {3*SHIRINA_KNOPKI, 200, "tv", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[3].kolvo_knopok = 0;
-    knopki_dlya_menu[4].knopki[0] = {4*SHIRINA_KNOPKI, 200, "tv", -1, txLoadImage ("Icons\\tv.bmp")};
-    knopki_dlya_menu[4].kolvo_knopok = 0;
+
 }
