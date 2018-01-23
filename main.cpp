@@ -11,6 +11,8 @@ int main()
 {
     txCreateWindow(1090,720);
 
+    HDC fon = txLoadImage ("Pictures\\fon.bmp");
+
     bool soobshenie_uzhe_pokazyvali = false;
 
     int nomer = 0;
@@ -26,8 +28,8 @@ int main()
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
-        txSetFillColor(RGB(112, 146, 190));
-        txClear();
+        txBitBlt (txDC(), 0, 0, 1000, 1000, fon);
+
 
         //Sterka
         if(txMouseButtons() &2)
@@ -126,6 +128,8 @@ int main()
 
     //Save to file
     save_map_massive(pics, nomer_kartinki);
+
+    txDeleteDC (&fon);
 
     for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
     {
