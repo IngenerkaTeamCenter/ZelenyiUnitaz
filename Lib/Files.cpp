@@ -3,6 +3,7 @@
 #include "TXLib.h"
 #include "menu.cpp"
 #include "Mebel.cpp"
+#include "Rounding.cpp"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -39,7 +40,7 @@ int read_map_file(Mebel* KART1)
 
             //txBitBlt (txDC(), atoi(x.c_str()), atoi(y.c_str()), bm.bmWidth, bm.bmHeight, pic, 0, 0);
             KART1[nomer] = {atoi(x.c_str()), atoi(y.c_str()), bm.bmWidth, pic, "1", bm.bmHeight, true, adress.c_str()};
-
+            roundCoords (&KART1[nomer], KART1[nomer].x, KART1[nomer].y);
             nomer++;
         }
     }
