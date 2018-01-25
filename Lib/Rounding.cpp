@@ -1,9 +1,10 @@
 #pragma once
 
+#include "Const.cpp"
 #include "TXLib.h"
 
 void roundCoords (Mebel* kartinca, int x, int y)
 {
-    kartinca->x = round((30/2+x)/30)*30;
-    kartinca->y = round((30/2+y)/30)*30;
+    kartinca->x = round ( x / SHIRINA_KARTINKI ) * SHIRINA_KARTINKI;
+    kartinca->y = round ( y / VYSOTA_KARTINKI ) * VYSOTA_KARTINKI;
  }
