@@ -51,7 +51,7 @@ void btn_click (Knopka* knop, int nomer_kartinki)
         && txMouseX() >= knop->x
         && txMouseX() <= knop->x + SHIRINA_KNOPKI
         && txMouseY() >= knop->y
-        && txMouseY() <= knop->y + VYSOTA_KNOPKI)
+        && txMouseY() <= knop->y + VYSOTA_KNOPKI )
     {
         knop->risovatKartinku = -knop->risovatKartinku;
 
@@ -102,7 +102,7 @@ void zapolnenie_menu()
     knopki_dlya_menu[6] = {6*SHIRINA_KNOPKI, 0, "table",    -1, txLoadImage ("Icons\\table.bmp"), "s"};
     knopki_dlya_menu[7] = {7*SHIRINA_KNOPKI, 0, "TV",       -1, txLoadImage ("Icons\\tv.bmp"), "t"};
     knopki_dlya_menu[8] = {8*SHIRINA_KNOPKI, 0, "iPad",     -1, txLoadImage ("Icons\\technology\\iPad.bmp"), "w"};
-    knopki_dlya_menu[9] = {9*SHIRINA_KNOPKI, 0, "iPhone_x", -1, txLoadImage ("Icons\\technology\\iPhone_x.bmp"), "x"};
+    knopki_dlya_menu[9] = {9*SHIRINA_KNOPKI, 0, "wall",     -1, txLoadImage ("Icons\\wall.bmp"), "x"};
 
     int x = 0;
     int y = 0;
