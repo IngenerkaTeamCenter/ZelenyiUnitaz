@@ -71,16 +71,20 @@ int main()
                 nomer_tv = nomer_tv  + 1;
             }
 
+            // Proveryaem, chto nelzya risovatnovyu kartinku
             for (int predydushii_nomer = 0; predydushii_nomer < nomer_kartinki; predydushii_nomer++)
             {
                 if (oneDimensionalDistance(pics[nomer_kartinki].x + 1,    pics[nomer_kartinki].x    + pics[nomer_kartinki].shirina,
                                            pics[predydushii_nomer].x + 1, pics[predydushii_nomer].x + pics[predydushii_nomer].shirina) == 0
+                    and
+                    pics[predydushii_nomer].risovat
                     and
                     oneDimensionalDistance(pics[nomer_kartinki].y + 1,    pics[nomer_kartinki].y    + pics[nomer_kartinki].vysota,
                                            pics[predydushii_nomer].y + 1, pics[predydushii_nomer].y + pics[predydushii_nomer].vysota) == 0)
                 {
                     many = true;
                 }
+
 
 		//Counting TVs
                 if (pics[predydushii_nomer].znak == "t")
