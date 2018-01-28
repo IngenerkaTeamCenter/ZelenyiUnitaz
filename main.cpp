@@ -116,7 +116,7 @@ int main()
 
         if (nomer_tv > 5 && !soobshenie_uzhe_pokazyvali)
         {
-            if (txMessageBox ("Это магазин техники?:)", "Предупреждение", MB_YESNO) == IDNO)
+            if (txMessageBox ("ГќГІГ® Г¬Г ГЈГ Г§ГЁГ­ ГІГҐГµГ­ГЁГЄГЁ?:)", "ГЏГ°ГҐГ¤ГіГЇГ°ГҐГ¦Г¤ГҐГ­ГЁГҐ", MB_YESNO) == IDNO)
             {
                 break;
             }
