@@ -95,7 +95,7 @@ void zapolnenie_menu()
 {
     KOLVO_KNOPOK = 0;
     knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "bad",      -1, txLoadImage ("Icons\\bad.bmp"), "b"};    KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "bath",      -1, txLoadImage ("Icons\\bath.bmp"), "b"};    KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "bath",      -1, txLoadImage ("Icons\\batch.bmp"), "b"};    KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
     knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "chair",    -1, txLoadImage ("Icons\\chair.bmp"), "c"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
     knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "sofa",     -1, txLoadImage ("Icons\\divan.bmp"), "b"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
     knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "oven",     -1, txLoadImage ("Icons\\duxovka.bmp"), "i"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
@@ -103,7 +103,7 @@ void zapolnenie_menu()
     knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "table",    -1, txLoadImage ("Icons\\table.bmp"), "s"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
     knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "TV",       -1, txLoadImage ("Icons\\tv.bmp"), "t"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
     knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "iPad",     -1, txLoadImage ("Icons\\technology\\iPad.bmp"), "w"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich", -1, txLoadImage ("Icons\\kirpich.bmp"), "x"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich", -1, txLoadImage ("Icons\\"kirpich.bmp"), "x"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
 
     SHIRINA_KNOPKI = txGetExtentX() / KOLVO_KNOPOK;
 }
