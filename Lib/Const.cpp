@@ -3,12 +3,13 @@
 
 const int GAME_MODE = 1;
 const int REDACTOR_MODE = 100;
-const int KOLVO_KNOPOK_MAX = 1500;
-int KOLVO_KNOPOK = 10;
-int SHIRINA_KNOPKI = 110;
-const int VYSOTA_KNOPKI = 50;
+const int KOLVO_KNOPOK = 10;
+const int SHIRINA_KNOPKI = 110;
+const int VYSOTA_KNOPKI = 60;
 const int VYSOTA_MENU = 0;
 const int ZERO = 0;
 const int COL_VO_KART = 1000;
 const int VYSOTA_KARTINKI = 30;
 const int SHIRINA_KARTINKI = 30;
+const int WINDOW_X = 1090;
+const int WINDOW_Y = 720;

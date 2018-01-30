@@ -25,7 +25,7 @@ struct Knopka {
     int kolvo_knopok;
 };
 
-Knopka knopki_dlya_menu[KOLVO_KNOPOK_MAX];
+Knopka knopki_dlya_menu[KOLVO_KNOPOK];
 
 void draw_button(Knopka knop)
 {
@@ -51,7 +51,7 @@ void btn_click (Knopka* knop, int nomer_kartinki)
         && txMouseX() >= knop->x
         && txMouseX() <= knop->x + SHIRINA_KNOPKI
         && txMouseY() >= knop->y
-        && txMouseY() <= knop->y + VYSOTA_KNOPKI)
+        && txMouseY() <= knop->y + VYSOTA_KNOPKI )
     {
         knop->risovatKartinku = -knop->risovatKartinku;
 
@@ -93,17 +93,26 @@ void btn_navashdenie (Knopka* knop)
 
 void zapolnenie_menu()
 {
-    KOLVO_KNOPOK = 0;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "bad",      -1, txLoadImage ("Icons\\bad.bmp"), "b"};    KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "batch",      -1, txLoadImage ("Icons\\batch.bmp"), "b"};    KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "chair",    -1, txLoadImage ("Icons\\chair.bmp"), "c"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "sofa",     -1, txLoadImage ("Icons\\divan.bmp"), "b"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "oven",     -1, txLoadImage ("Icons\\duxovka.bmp"), "i"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "cupboard", -1, txLoadImage ("Icons\\schaf.bmp"), "d"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "table",    -1, txLoadImage ("Icons\\table.bmp"), "s"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "TV",       -1, txLoadImage ("Icons\\tv.bmp"), "t"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "iPad",     -1, txLoadImage ("Icons\\technology\\iPad.bmp"), "w"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "iPhone_x", -1, txLoadImage ("Icons\\technology\\iPhone_x.bmp"), "x"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[0] = {               0, 0, "bad",      -1, txLoadImage ("Icons\\bad.bmp"), "b"};
+    knopki_dlya_menu[1] = {  SHIRINA_KNOPKI, 0, "batch",    -1, txLoadImage ("Icons\\bath.bmp"), "q"};
+    knopki_dlya_menu[2] = {2*SHIRINA_KNOPKI, 0, "chair",    -1, txLoadImage ("Icons\\chair.bmp"), "c"};
+    knopki_dlya_menu[3] = {3*SHIRINA_KNOPKI, 0, "sofa",     -1, txLoadImage ("Icons\\divan.bmp"), "b"};
+    knopki_dlya_menu[4] = {4*SHIRINA_KNOPKI, 0, "oven",     -1, txLoadImage ("Icons\\duxovka.bmp"), "i"};
+    knopki_dlya_menu[5] = {5*SHIRINA_KNOPKI, 0, "cupboard", -1, txLoadImage ("Icons\\schaf.bmp"), "d"};
+    knopki_dlya_menu[6] = {6*SHIRINA_KNOPKI, 0, "table",    -1, txLoadImage ("Icons\\table.bmp"), "s"};
+    knopki_dlya_menu[7] = {7*SHIRINA_KNOPKI, 0, "TV",       -1, txLoadImage ("Icons\\tv.bmp"), "t"};
+    knopki_dlya_menu[8] = {8*SHIRINA_KNOPKI, 0, "iPad",     -1, txLoadImage ("Icons\\technology\\iPad.bmp"), "w"};
+    knopki_dlya_menu[9] = {9*SHIRINA_KNOPKI, 0, "wall",     -1, txLoadImage ("Icons\\wall.bmp"), "x"};
 
-    SHIRINA_KNOPKI = txGetExtentX() / KOLVO_KNOPOK;
+    int x = 0;
+    int y = 0;
+    int nomer_knopki = 0;
+
+
+
+    y = 0;
+    x += SHIRINA_KNOPKI;
+    nomer_knopki = 0;
+
+
 }
