@@ -121,6 +121,8 @@ int main()
                 break;
             }
 
+
+
             soobshenie_uzhe_pokazyvali = true;
         }
 
@@ -134,6 +136,10 @@ int main()
     for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
     {
         txDeleteDC (knopki_dlya_menu[nomer_knopki].kartinka);
+    }
+    for (int nomer = 0; nomer < COL_VO_KART; nomer++)
+    {
+        txDeleteDC (pics[nomer].kartinka);
     }
 
     return 0;
