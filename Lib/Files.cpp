@@ -59,7 +59,16 @@ void save_map_massive(Mebel* KART1, int nomer_kartinki)
     {
         if (KART1[i].risovat)
         {
-            fout_save << /*KART1[i].adress << "," <<*/ KART1[i].x << "," << KART1[i].y << endl;
+            if (strcmp(KART1[i].znak, knopki_dlya_menu[nomer_knopki = 0.. 9].znak) == 0)
+            {
+                KART1[b].adress = knopki_dlya_menu[0].adress;
+                KART2[l].adress = knopki_dlya_menu[0].adress;
+                KART3[c].adress = knopki_dlya_menu[0].adress;
+            }
+
+            fout_save << KART1[b].adress << ", " << KART1[b].x << ", " << KART1[b].y << endl;
+            fout_save << KART2[l].adress << ", " << KART1[l].x << ", " << KART1[l].y << endl;
+            fout_save << KART3[c].adress << ", " << KART1[c].x << ", " << KART1[c].y << endl;
         }
     }
     fout_save.close();
