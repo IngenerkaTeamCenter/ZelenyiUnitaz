@@ -1,0 +1,4 @@
+main.o
+зеленый унитаз баги (оригинал).txt
+main.cpp.save
+Pictures
