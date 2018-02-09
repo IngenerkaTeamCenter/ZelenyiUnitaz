@@ -85,8 +85,6 @@ int main()
                     many = true;
                 }
 
-
-		//Counting TVs
                 if (pics[predydushii_nomer].znak == "t")
                 {
                     nomer_tv = nomer_tv  + 1;
