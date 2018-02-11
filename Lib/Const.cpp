@@ -12,3 +12,5 @@ const int ZERO = 0;
 const int COL_VO_KART = 1000;
 const int VYSOTA_KARTINKI = 30;
 const int SHIRINA_KARTINKI = 30;
+const int WINDOW_X = 1090;
+const int WINDOW_Y = 720;
