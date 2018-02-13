@@ -1,7 +1,39 @@
-200,200
-200,400
-400,200
-300,200
-200,300
-300,300
-600,200
+Icons\\bad.bmp, 180, 180
+Icons\\tv.bmp, 180, 390
+Icons\\tv.bmp, 390, 180
+Icons\\tv.bmp, 300, 180
+Icons\\tv.bmp, 180, 300
+Icons\\tv.bmp, 300, 300
+Icons\\tv.bmp, 600, 180
+Icons\bad.bmp, 390, 270
+Icons\bad.bmp, 420, 300
+Icons\bad.bmp, 480, 390
+Icons\bad.bmp, 510, 390
+Icons\bad.bmp, 540, 270
+Icons\bad.bmp, 480, 240
+Icons\bad.bmp, 510, 240
+Icons\bad.bmp, 360, 240
+Icons\bad.bmp, 480, 330
+Icons\bad.bmp, 510, 330
+Icons\bad.bmp, 420, 240
+Icons\bad.bmp, 120, 240
+Icons\bad.bmp, 300, 330
+Icons\bad.bmp, 330, 360
+Icons\bad.bmp, 330, 300
+Icons\bad.bmp, 270, 240
+Icons\bad.bmp, 300, 240
+Icons\bad.bmp, 210, 180
+Icons\bad.bmp, 60, 150
+Icons\bad.bmp, 120, 180
+Icons\bad.bmp, 300, 30
+Icons\bad.bmp, 180, 120
+Icons\bad.bmp, 450, 210
+Icons\bad.bmp, 180, 240
+Icons\bad.bmp, 360, 420
+Icons\bad.bmp, 450, 450
+Icons\bad.bmp, 510, 450
+Icons\bad.bmp, 780, 390
+Icons\bad.bmp, 720, 270
+Icons\bad.bmp, 810, 300
+Icons\bad.bmp, 690, 180
+Icons\bad.bmp, 570, 120

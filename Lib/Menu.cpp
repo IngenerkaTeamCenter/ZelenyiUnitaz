@@ -8,6 +8,7 @@ struct Knopka2 {
     int y;
     const char* text;
     int risovatKartinku;
+    string adress;
     HDC kartinka;
     bool najata;
 };
@@ -18,6 +19,7 @@ struct Knopka {
     int y;
     const char* text;
     int risovatKartinku;
+    string adress;
     HDC kartinka;
     const char* znak;
     bool najata;
@@ -94,16 +96,16 @@ void btn_navashdenie (Knopka* knop)
 void zapolnenie_menu()
 {
     KOLVO_KNOPOK = 0;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "bad",      -1, txLoadImage ("Icons\\bad.bmp"), "b"};    KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "batch",      -1, txLoadImage ("Icons\\batch.bmp"), "b"};    KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "chair",    -1, txLoadImage ("Icons\\chair.bmp"), "c"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "sofa",     -1, txLoadImage ("Icons\\divan.bmp"), "b"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "oven",     -1, txLoadImage ("Icons\\duxovka.bmp"), "i"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "cupboard", -1, txLoadImage ("Icons\\schaf.bmp"), "d"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "table",    -1, txLoadImage ("Icons\\table.bmp"), "s"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "TV",       -1, txLoadImage ("Icons\\tv.bmp"), "t"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "iPad",     -1, txLoadImage ("Icons\\technology\\iPad.bmp"), "w"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "iPhone_x", -1, txLoadImage ("Icons\\technology\\iPhone_x.bmp"), "x"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+        knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "bad",      -1, "Icons\\bad.bmp",  txLoadImage ("Icons\\bad.bmp"), "b"};   KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "bath",     -1, "Icons\\bath.bmp", txLoadImage ("Icons\\bath.bmp"), "l"};  KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "chair",    -1, "Icons\\chair.bmp", txLoadImage ("Icons\\chair.bmp"), "c"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "sofa",     -1, "Icons\\divan.bmp", txLoadImage ("Icons\\divan.bmp"), "v"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "oven",     -1, "Icons\\duxovka.bmp", txLoadImage ("Icons\\duxovka.bmp"), "i"};KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "cupboard", -1, "Icons\\schaf.bmp", txLoadImage ("Icons\\schaf.bmp"), "d"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "table",    -1, "Icons\\tabl.bmp", txLoadImage ("Icons\\table.bmp"), "s"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "TV",       -1, "Icons\\tv.bmp", txLoadImage ("Icons\\tv.bmp"), "t"};    KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "iPad",     -1, "Icons\\technology\\iPad.bmp", txLoadImage ("Icons\\technology\\iPad.bmp"), "w"};KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "iPhone_x", -1, "Icons\\technology\\iPhone_x.bmp",txLoadImage ("Icons\\technology\\iPhone_x.bmp"), "x"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
 
     SHIRINA_KNOPKI = txGetExtentX() / KOLVO_KNOPOK;
 }

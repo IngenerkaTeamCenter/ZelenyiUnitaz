@@ -1,8 +1,6 @@
 #pragma once
 #include "TXLib.h"
 
-const int GAME_MODE = 1;
-const int REDACTOR_MODE = 100;
 const int KOLVO_KNOPOK_MAX = 1500;
 int KOLVO_KNOPOK = 10;
 int SHIRINA_KNOPKI = 110;
