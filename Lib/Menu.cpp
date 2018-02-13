@@ -71,16 +71,17 @@ void btn_navashdenie (Knopka* knop)
 void zapolnenie_menu()
 {
     KOLVO_KNOPOK = 0;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "bad",      -1, "Icons\\\\bad.bmp",  txLoadImage ("Icons\\bad.bmp"), "b"};   KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "bath",     -1, "Icons\\\\bath.bmp", txLoadImage ("Icons\\bath.bmp"), "l"};  KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "chair",    -1, "Icons\\\\chair.bmp", txLoadImage ("Icons\\chair.bmp"), "c"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "sofa",     -1, "Icons\\\\divan.bmp", txLoadImage ("Icons\\divan.bmp"), "v"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "oven",     -1, "Icons\\\\duxovka.bmp", txLoadImage ("Icons\\duxovka.bmp"), "i"};KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "cupboard", -1, "Icons\\\\schaf.bmp", txLoadImage ("Icons\\schaf.bmp"), "d"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "table",    -1, "Icons\\\\tabl.bmp", txLoadImage ("Icons\\table.bmp"), "s"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "TV",       -1, "Icons\\\\tv.bmp", txLoadImage ("Icons\\tv.bmp"), "t"};    KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "iPad",     -1, "Icons\\\\technology.bmp", txLoadImage ("Icons\\technology\\iPad.bmp"), "w"};KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich",  -1, "Icons\\\\bath.bmp", txLoadImage ("Icons\\kirpich.bmp"), "x"};KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich",  -1, "Icons\\kirpich.bmp",  txLoadImage ("Icons\\kirpich.bmp"),  "x"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich2", -1, "Icons\\kirpich2.bmp", txLoadImage ("Icons\\kirpich2.bmp"), "l"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich3", -1, "Icons\\kirpich3.bmp", txLoadImage ("Icons\\kirpich3.bmp"), "c"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich4", -1, "Icons\\kirpich4.bmp", txLoadImage ("Icons\\kirpich4.bmp"), "v"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich5", -1, "Icons\\kirpich5.bmp", txLoadImage ("Icons\\kirpich5.bmp"), "i"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich6", -1, "Icons\\kirpich6.bmp", txLoadImage ("Icons\\kirpich6.bmp"), "d"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich7", -1, "Icons\\kirpich7.bmp", txLoadImage ("Icons\\kirpich7.bmp"), "s"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich8", -1, "Icons\\kirpich8.bmp", txLoadImage ("Icons\\kirpich8.bmp"), "t"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich9", -1, "Icons\\kirpich9.bmp", txLoadImage ("Icons\\kirpich9.bmp"), "w"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "kirpich10",-1, "Icons\\kirpich10.bmp",txLoadImage ("Icons\\kirpich10.bmp"), "w"};KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+
 
     SHIRINA_KNOPKI = txGetExtentX() / KOLVO_KNOPOK;
 }

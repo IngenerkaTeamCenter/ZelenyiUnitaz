@@ -18,6 +18,7 @@ int main()
     {
         pics[nomer].risovat = false;
         pics[nomer].kartinka = NULL;
+
     }
 
     zapolnenie_menu();

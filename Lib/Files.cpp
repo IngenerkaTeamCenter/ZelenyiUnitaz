@@ -50,25 +50,27 @@ int read_map_file(Mebel* KART1)
     return nomer;
 }
 
-void save_map_massive(Mebel* KART1, int nomer_kartinki)
+void save_map_massive(Mebel* massiv_mebeli, int vsego_kartinok)
 {
     ofstream fout_save;
     fout_save.open("Files\\savefile.txt");
 
-    for (int i = 0; i< nomer_kartinki; i++)
+    for (int nomer_kartinki = 0; nomer_kartinki < vsego_kartinok; nomer_kartinki++)
     {
-        if (KART1[i].risovat)
+        if (massiv_mebeli[nomer_kartinki].risovat)
         {
-            if (strcmp(KART1[i].znak, knopki_dlya_menu[nomer_knopki = 0.. 9].znak) == 0)
+            for (int nomer_knopki = 0; nomer_knopki < KOLVO_KNOPOK; nomer_knopki++)
             {
-                KART1[b].adress = knopki_dlya_menu[0].adress;
-                KART2[l].adress = knopki_dlya_menu[0].adress;
-                KART3[c].adress = knopki_dlya_menu[0].adress;
+                if (strcmp( massiv_mebeli[nomer_kartinki].znak,
+                            knopki_dlya_menu[nomer_knopki].znak) == 0)
+                {
+                    massiv_mebeli[nomer_kartinki].adress = knopki_dlya_menu[nomer_knopki].adress;
+                }
             }
 
-            fout_save << KART1[b].adress << ", " << KART1[b].x << ", " << KART1[b].y << endl;
-            fout_save << KART2[l].adress << ", " << KART1[l].x << ", " << KART1[l].y << endl;
-            fout_save << KART3[c].adress << ", " << KART1[c].x << ", " << KART1[c].y << endl;
+            fout_save <<    massiv_mebeli[nomer_kartinki].adress << ", " <<
+                            massiv_mebeli[nomer_kartinki].x << ", " <<
+                            massiv_mebeli[nomer_kartinki].y << endl;
         }
     }
     fout_save.close();

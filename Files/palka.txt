@@ -1,31 +1,31 @@
-100,440
-100,420
-100,400
-100,380
-100,360
-100,340
-100,320
-100,300
-100,280
-100,260
-100,240
-100,220
-100,200
-100,180
-100,160
-100,140
-140,280
-180,280
-220,280
-260,280
-300,280
-200,260
-160,260
-260,260
-220,220
-180,220
-180,240
-280,360
-300,400
-240,400
-220,300
+Icons\kirpich.bmp, 100, 440
+Icons\kirpich.bmp, 100, 420
+Icons\kirpich.bmp, 100, 400
+Icons\kirpich.bmp, 100, 380
+Icons\kirpich.bmp, 100, 360
+Icons\kirpich.bmp, 100, 340
+Icons\kirpich.bmp, 100, 320
+Icons\kirpich.bmp, 100, 300
+Icons\kirpich.bmp, 100, 280
+Icons\kirpich.bmp, 100, 260
+Icons\kirpich.bmp, 100, 240
+Icons\kirpich.bmp, 100, 220
+Icons\kirpich.bmp, 100, 200
+Icons\kirpich.bmp, 100, 180
+Icons\kirpich.bmp, 100, 160
+Icons\kirpich.bmp, 100, 140
+Icons\kirpich.bmp, 140, 280
+Icons\kirpich.bmp, 180, 280
+Icons\kirpich.bmp, 220, 280
+Icons\kirpich.bmp, 260, 280
+Icons\kirpich.bmp, 300, 280
+Icons\kirpich.bmp, 200, 260
+Icons\kirpich.bmp, 160, 260
+Icons\kirpich.bmp, 260, 260
+Icons\kirpich.bmp, 220, 220
+Icons\kirpich.bmp, 180, 220
+Icons\kirpich.bmp, 180, 240
+Icons\kirpich.bmp, 280, 360
+Icons\kirpich.bmp, 300, 400
+Icons\kirpich.bmp, 240, 400
+Icons\kirpich.bmp, 220, 300
