@@ -11,6 +11,8 @@ int main()
 {
     txCreateWindow(1090,720);
 
+    HDC fon = txLoadImage ("Icons//fon.bmp");
+
     bool soobshenie_uzhe_pokazyvali = false;
 
     int nomer = 0;
@@ -27,8 +29,7 @@ int main()
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
-        txSetFillColor(RGB(112, 146, 190));
-        txClear();
+        txBitBlt (txDC(),0,0,1090,720,fon);
 
         //Sterka
         if(txMouseButtons() &2)
@@ -67,10 +68,6 @@ int main()
 
             bool many = false;
             //My pishem 1, shtoby (30, 60) i (60, 90) schitalis neperesecajushimisya
-            if (pics[nomer_kartinki].znak == "t")
-            {
-                nomer_tv = nomer_tv  + 1;
-            }
 
             // Proveryaem, chto nelzya risovatnovyu kartinku
             for (int predydushii_nomer = 0; predydushii_nomer < nomer_kartinki; predydushii_nomer++)
@@ -86,17 +83,6 @@ int main()
                     many = true;
                 }
 
-
-		//Counting TVs
-                if (pics[predydushii_nomer].znak == "t")
-                {
-                    nomer_tv = nomer_tv  + 1;
-                }
-
-                if ((pics[nomer_kartinki].znak == "s" && pics[predydushii_nomer].znak == "s"))
-                {
-                    many = true;
-                }
             }
 
             if (!many)
@@ -117,10 +103,7 @@ int main()
 
         if (nomer_tv > 5 && !soobshenie_uzhe_pokazyvali)
         {
-            if (txMessageBox ("Ýòî ìàãàçèí òåõíèêè?:)", "Ïðåäóïðåæäåíèå", MB_YESNO) == IDNO)
-            {
-                break;
-            }
+
 
             soobshenie_uzhe_pokazyvali = true;
         }
@@ -128,6 +111,8 @@ int main()
         txSleep (10);
         txEnd();
     }
+
+    txDeleteDC (&fon);
 
     //Save to file
     save_map_massive(pics, nomer_kartinki);
