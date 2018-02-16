@@ -9,7 +9,9 @@
 
 int main()
 {
-    txCreateWindow(1090,720);
+    txCreateWindow(WINDOW_X,WINDOW_Y);
+
+         HDC fon = txLoadImage ("Icons\\fon.bmp");
 
     bool soobshenie_uzhe_pokazyvali = false;
 
@@ -26,8 +28,7 @@ int main()
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
         txBegin();
-        txSetFillColor(RGB(112, 146, 190));
-        txClear();
+    txBitBlt (txDC(), 0, 0, WINDOW_X, WINDOW_Y, fon);
 
         //Sterka
         if(txMouseButtons() &2)
@@ -127,6 +128,8 @@ int main()
         txSleep (10);
         txEnd();
     }
+
+     txDeleteDC (&fon);
 
     //Save to file
     save_map_massive(pics, nomer_kartinki);
