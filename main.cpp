@@ -117,7 +117,7 @@ int main()
 
         if (nomer_tv > 5 && !soobshenie_uzhe_pokazyvali)
         {
-            if (txMessageBox ("Ýòî ìàãàçèí òåõíèêè?:)", "Ïðåäóïðåæäåíèå", MB_YESNO) == IDNO)
+            if (txMessageBox ("It is technology shop?:)", "debil", MB_YESNO) == IDNO)
             {
                 break;
             }
