@@ -105,7 +105,7 @@ void zapolnenie_menu()
     knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "table",    -1, "Icons\\tabl.bmp", txLoadImage ("Icons\\table.bmp"), "s"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
     knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "TV",       -1, "Icons\\tv.bmp", txLoadImage ("Icons\\tv.bmp"), "t"};    KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
     knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "iPad",     -1, "Icons\\technology\\iPad.bmp", txLoadImage ("Icons\\technology\\iPad.bmp"), "w"};KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
-    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "wall",     -1, "Icons\\wall.bmp", txLoadImage ("Icons\\wall.bmp"), "x"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
+    knopki_dlya_menu[KOLVO_KNOPOK] = {KOLVO_KNOPOK * SHIRINA_KNOPKI, 0, "iPhone_x", -1, "Icons\\technology\\iPhone_x.bmp",txLoadImage ("Icons\\technology\\iPhone_x.bmp"), "x"}; KOLVO_KNOPOK = KOLVO_KNOPOK + 1;
 
     SHIRINA_KNOPKI = txGetExtentX() / KOLVO_KNOPOK;
 }
